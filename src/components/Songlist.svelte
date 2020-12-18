@@ -5,13 +5,18 @@
   import { orderby } from "../stores/jukebox.js";
   import { createEventDispatcher } from "svelte";
   import { csv } from "d3-fetch";
+  import { group, descending, ascending } from "d3-array";
+  import { selectAll } from "d3-selection";
 
   const dispatch = createEventDispatcher();
   let active;
-  let data = [];
+  let grouped = [];
   let active_track_key;
   let filename;
-  const folder_name = "assets/data/single_rows/";
+  let variable_name;
+  const diff_string = "difference_";
+  let artist_songlist;
+  const folder_name = "assets/data/final_data_1218/single_rows/";
   const endpoint = ".csv";
   $: updateSong($song);
 
@@ -22,9 +27,13 @@
   }
 
   onMount(() => {
-    csv("assets/data/songlist_raw.csv")
+    csv("assets/data/final_data_1218/songlist_wide.csv")
       .then((raw) => {
-        data = raw;
+        grouped = Array.from(
+          group(raw, (d) => d.artist_name_studio),
+          ([artist_name, artist_songlist]) => ({ artist_name, artist_songlist })
+        );
+        console.log(grouped);
         active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
         filename = folder_name.concat(active_track_key, endpoint);
         csv(filename).then((selected) => {
@@ -57,33 +66,48 @@
         console.log(error);
       });
   }
+
+  function sortData(v) {
+    //reorder the data using v as column name
+    variable_name = diff_string.concat($orderby);
+    grouped.forEach((g) => {
+      artist_songlist = g.artist_songlist;
+      console.log(artist_songlist);
+      artist_songlist.sort((a, b) =>
+        descending(a[variable_name], b[variable_name])
+      );
+    });
+    grouped = grouped;
+  }
+
+  $: sortData($orderby);
 </script>
 
-{#if data.length}
+{#if grouped.length}
   <ul>
-    {#each data as d, i}
+    {#each grouped as d}
       {#if search_query}
-        {#if d.artist_name_studio
-          .toLowerCase()
-          .includes(
-            search_query
-          ) || d.track_name_studio.toLowerCase().includes(search_query)}
-          <li
-            class:active="{active === d.track_key}"
-            on:click="{() => onSelect(d)}">
-            {d.artist_name_studio}
-            -
-            {d.track_name_studio}
-          </li>
+        {#if d.artist_name.toLowerCase().includes(search_query)}
+          <li class="artist-name">{d.artist_name}</li>
+          {#each d.artist_songlist as v}
+            <li
+              class:active="{active === v.track_key}"
+              class="track-name"
+              on:click="{() => onSelect(v)}">
+              {v.track_name_studio}
+            </li>
+          {/each}
         {/if}
       {:else}
-        <li
-          class:active="{active === d.track_key}"
-          on:click="{() => onSelect(d)}">
-          {d.artist_name_studio}
-          -
-          {d.track_name_studio}
-        </li>
+        <li class="artist-name">{d.artist_name}</li>
+        {#each d.artist_songlist as v}
+          <li
+            class:active="{active === v.track_key}"
+            class="track-name"
+            on:click="{() => onSelect(v)}">
+            {v.track_name_studio}
+          </li>
+        {/each}
       {/if}
     {/each}
   </ul>
@@ -100,5 +124,13 @@
 
   li.active {
     background: yellow;
+  }
+
+  .artist-name {
+    color: #d24939;
+  }
+
+  .track-name {
+    padding-left: 3rem;
   }
 </style>
