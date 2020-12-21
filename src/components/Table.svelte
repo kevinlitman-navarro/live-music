@@ -83,7 +83,6 @@
 </script>
 
 <div>
-  <p>A table from CSV data</p>
   <table>
     <thead>
       <tr>
@@ -135,6 +134,12 @@
         <td>{$song.duration_studio}</td>
         <td>{$song.duration_live}</td>
         <td>{$song.difference_duration}</td>
+      </tr>
+      <tr>
+        <td>Overall</td>
+        <td></td>
+        <td></td>
+        <td>{$song.difference_overall}</td>
       </tr>
     </tbody>
   </table>

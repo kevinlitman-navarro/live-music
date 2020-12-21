@@ -6,7 +6,6 @@
   export let buttons;
   //   export let legend;
   import { orderby } from "../stores/jukebox.js";
-  $: console.log($orderby);
 
   export const slugify = (str = "") =>
     str.toLowerCase().replace(/ /g, "-").replace(/\./g, "");
@@ -89,8 +88,8 @@
     height: 0.5em;
     top: 0.25em;
     left: 1.25em;
-    background: var(--accent-color);
-    border: 1px solid var(--accent-color);
+    background: var(--red);
+    border: 1px solid var(--red);
     border-radius: 50%;
     transform: scale(0);
     transition: transform 0.2s ease-out;

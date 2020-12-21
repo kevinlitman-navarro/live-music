@@ -1,4 +1,4 @@
-album_name_live,track_name_studio,artist_name_studio,track_key,difference_energy,difference_tempo,difference_speechiness,difference_dance,difference_instrumentalness,difference_valence,difference_acousticness,difference_duration,overall_difference,key_variable
+album_name_live,track_name_studio,artist_name_studio,track_key,difference_energy,difference_tempo,difference_speechiness,difference_dance,difference_instrumentalness,difference_valence,difference_acousticness,difference_duration,difference_overall,key_variable
 So Much Shouting So Much Laughing,Whatall Is Nice,Ani DiFranco,4XmfJCDvBBsFumLfhsVh7j6950ZW6MYVTwN4l6FRFl3U,0.294,-45.438,-0.0075,0.069,0.6562,-0.001,-0.79,63173,1.8176999999999999,difference_instrumentalness
 Living In Clip,Not So Soft,Ani DiFranco,39pSfP8fMhKzHlZJZQA0vX66KvqVK90iVAWNpTc43mem,-0.095,-9.53,-0.7623,0.068,0.142,0.245,0.398,86480,1.7103000000000002,difference_acousticness
 Living In Clip,Fire Door,Ani DiFranco,6O1eoFDJBkwZ1VNcTN3Cay1zgOuflKpOAPTu9Ga6VJ2Z,0.5673,12.026,-0.097,0.024,0.0524,0.095,-0.639,80733,1.4747,difference_energy

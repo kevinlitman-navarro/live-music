@@ -1,4 +1,4 @@
-album_name_live,track_name_studio,artist_name_studio,track_key,difference_energy,difference_tempo,difference_speechiness,difference_dance,difference_instrumentalness,difference_valence,difference_acousticness,difference_duration,overall_difference,key_variable
+album_name_live,track_name_studio,artist_name_studio,track_key,difference_energy,difference_tempo,difference_speechiness,difference_dance,difference_instrumentalness,difference_valence,difference_acousticness,difference_duration,difference_overall,key_variable
 So Much Shouting So Much Laughing,Whatall Is Nice,Ani DiFranco,4XmfJCDvBBsFumLfhsVh7j6950ZW6MYVTwN4l6FRFl3U,0.294,-45.438,-0.0075,0.069,0.6562,-0.001,-0.79,63173,1.8176999999999999,difference_instrumentalness
 Living In Clip,Not So Soft,Ani DiFranco,39pSfP8fMhKzHlZJZQA0vX66KvqVK90iVAWNpTc43mem,-0.095,-9.53,-0.7623,0.068,0.142,0.245,0.398,86480,1.7103000000000002,difference_acousticness
 Living In Clip,Fire Door,Ani DiFranco,6O1eoFDJBkwZ1VNcTN3Cay1zgOuflKpOAPTu9Ga6VJ2Z,0.5673,12.026,-0.097,0.024,0.0524,0.095,-0.639,80733,1.4747,difference_energy
@@ -1099,11 +1099,11 @@ Live At Folsom Field Boulder Colorado,Bartender,Dave Matthews Band,3Cygu4ytxgsXL
 "Live Trax Vol. 30: The Muse, Nantucket, MA",Halloween,Dave Matthews Band,2JQ5UEeNaA2Uow8bL8GmFF6ye9NkgWhPSlnXDGmKg05U,-0.004,1.957,0.0232,-0.111,0.0958,-0.121,-0.0923,204146,0.4473,difference_instrumentalness
 Live Trax Vol. 20: Wetlands Preserve,Satellite,Dave Matthews Band,7FXoionVqQVZISNUgCIenZ2KHacLT3Iskjb0bC0gWDVE,-0.159,-1.355,0.0097,-0.117,0.0936,-0.051,-0.016,45133,0.44630000000000003,difference_instrumentalness
 Live Trax Vol. 2: Golden Gate Park,What Would You Say,Dave Matthews Band,58kdQwsAi2zHEiU2l0CBB87kkuIwEbtnufs7HdPiYDKY,0.062,-5.188,0.0906,-0.109,-0.0004,-0.153,-0.0305,122094,0.4455,difference_speechiness
+"Live Trax Vol. 29: Blossom Music Center, Cuyahoga Falls, OH",Gaucho,Dave Matthews Band,4DTvnqU2ZDdZeDA9BLhfWP38gnUXD9fVy5lCBgRvELpc,-0.044,-35.435,0.0031,-0.019,0.0,-0.114,-0.264,120292,0.44410000000000005,difference_speechiness
 Live Trax 2008,Bartender,Dave Matthews Band,4b08ATxMr59xjM8GePxlwq3rSBUK0ehv1fkoRKEYFE3m,-0.06,5.412,-0.0099,0.017,0.0112,-0.249,-0.097,330907,0.44410000000000005,difference_dance
 Live Trax 2008,Bartender,Dave Matthews Band,4b08ATxMr59xjM8GePxlwq3PYWwkNEAxQkGHOWz2m79J,-0.06,5.412,-0.0099,0.017,0.0112,-0.249,-0.097,330907,0.44410000000000005,difference_dance
 Live Trax 2008,Bartender,Dave Matthews Band,3Cygu4ytxgsXL3JzPbQV8E3rSBUK0ehv1fkoRKEYFE3m,-0.06,5.412,-0.0099,0.017,0.0112,-0.249,-0.097,330907,0.44410000000000005,difference_dance
 Live Trax 2008,Bartender,Dave Matthews Band,3Cygu4ytxgsXL3JzPbQV8E3PYWwkNEAxQkGHOWz2m79J,-0.06,5.412,-0.0099,0.017,0.0112,-0.249,-0.097,330907,0.44410000000000005,difference_dance
-"Live Trax Vol. 29: Blossom Music Center, Cuyahoga Falls, OH",Gaucho,Dave Matthews Band,4DTvnqU2ZDdZeDA9BLhfWP38gnUXD9fVy5lCBgRvELpc,-0.044,-35.435,0.0031,-0.019,0.0,-0.114,-0.264,120292,0.44410000000000005,difference_speechiness
 Live Trax Vol. 6: Fenway Park,Jimi Thing,Dave Matthews Band,1ZqWroaJ6jk1CiufXZnQBr3fyEovkmd4Jhd03p5t5Pz0,0.1,88.539,0.0603,-0.247,0.0003,0.011,0.021,719840,0.4396,difference_energy
 Live Trax Vol. 9: MGM Grand Garden Arena,Satellite,Dave Matthews Band,7FXoionVqQVZISNUgCIenZ3jvZzJ9iB0IYLawuWv7pyA,0.114,-2.616,0.026,-0.193,0.0,-0.037,-0.069,21560,0.43900000000000006,difference_energy
 Live Trax Vol. 6: Fenway Park,Jimi Thing,Dave Matthews Band,1ZqWroaJ6jk1CiufXZnQBr1MGqaRrvGgwRXg0we4lsxY,0.102,89.093,0.0623,-0.247,0.0002,0.009,0.0167,719840,0.43720000000000003,difference_energy
@@ -1642,8 +1642,8 @@ Hampton Comes Alive,The Divided Sky,Phish,7FcShHdjNAE2ENmcZMzW6m3tBWO15lTXo4FVzW
 "LivePhish, Vol. 4 6/14/00 (Drum Logos, Fukuoka, Japan)",Back On The Train,Phish,2HPaEn6cHI23e6Wxfr7awl1Rf06tcToVYygLc94n4EBx,-0.079,-2.757,-0.0025,0.053,0.58,0.234,0.5389,251480,1.4874,difference_instrumentalness
 LivePhish 05/08/93,Guelah Papyrus,Phish,5qAJcIgrDZa3uzbbbOy6Dg4WWe5pysO4x4y1AT0ciwqH,0.092,-69.987,-0.0047,-0.1,0.6207,0.089,0.5789,-10560,1.4853,difference_instrumentalness
 "Live Phish: 7/4/10 Verizon Wireless At Encore Park, Alpharetta, GA",Harpua,Phish,6TTi8Vr477mIqtLIw1wyp33g4jQMJyMUSMbHnxrDwN2a,0.497,-4.702,-0.031,-0.07,0.0157,-0.126,-0.7425,-299160,1.4822000000000002,difference_energy
-"Live Phish: 10/26/10 Verizon Wireless Arena, Manchester, NH",Alumni Blues,Phish,3d5cojYmcovBsBIRCvApyJ1nORzWVM2fxFJjzFjeN7Pw,0.517,15.287,0.0245,-0.348,-0.0006,-0.418,-0.1734,-11106,1.4815,difference_energy
 LivePhish 04/04/98,Ginseng Sullivan,Phish,60gM2zBeWZoqAnbleSfkQo3737Kz8m6QPnKO14FLVYVN,-0.255,-12.802,-0.0274,0.089,0.2151,0.212,0.683,37212,1.4815,difference_acousticness
+"Live Phish: 10/26/10 Verizon Wireless Arena, Manchester, NH",Alumni Blues,Phish,3d5cojYmcovBsBIRCvApyJ1nORzWVM2fxFJjzFjeN7Pw,0.517,15.287,0.0245,-0.348,-0.0006,-0.418,-0.1734,-11106,1.4815,difference_energy
 "Live Phish: 10/30/10, Boardwalk Hall, Atlantic City, NJ",Halley's Comet,Phish,5xiv6HVE3pBksBOhRRFLIQ6fJpPQG5cwdysyWveTLlCQ,0.272,-5.372,0.0543,-0.039,-0.237,0.186,-0.692,-1196253,1.4803,difference_energy
 "LivePhish, Vol. 4 6/14/00 (Drum Logos, Fukuoka, Japan)",Back on the Train,Phish,1NVlLhQzlB6c8MAsSKncft1Rf06tcToVYygLc94n4EBx,-0.038,6.216,0.0042,-0.186,0.6895,-0.017,0.542,630533,1.4767000000000001,difference_instrumentalness
 "LivePhish, Vol. 12 8/13/96 (Deer Creek Music Center, Noblesville, IN)",Split Open and Melt,Phish,3odJ78GXKL8cHucOd0btsR0ysuyB5dYU4xErecfYoRHn,0.145,20.753,-0.0175,-0.188,0.6069,-0.034,0.483,477654,1.4744,difference_instrumentalness
@@ -2060,8 +2060,8 @@ LivePhish 05/08/93,Mike's Song,Phish,2CUFj1kIMg9hVFSQwmNbXt2b3xYyUCv5RkclitDePHw
 "LivePhish, Vol. 3 9/14/00 (Darien Lake Peforming Arts Center, Darien Center, NY)",Punch You In The Eye,Phish,6dO7oearT5W5sZylLjLkXC3yv6gbRKu5264rLq1yrFVs,-0.079,-1.487,-0.0047,-0.08,0.2885,0.109,0.387,2467,0.9481999999999999,difference_acousticness
 LivePhish 04/02/98,Wolfman's Brother,Phish,68SyEKycbWPEDLlfGHdZf11IOjRaxCNoomvROP2Msk5j,-0.164,0.361,-0.0031,0.083,0.1459,0.045,0.507,-103374,0.948,difference_acousticness
 LivePhish 04/04/98,Bouncing Around The Room,Phish,0NmSZ7gJai0W1p1khhHc604t9sqgPvEqKfs0ff2veVB9,-0.06,0.399,0.0087,-0.021,0.0465,-0.23,0.581,-4920,0.9471999999999999,difference_acousticness
-Hampton Comes Alive,Quinn The Eskimo,Phish,4YLvRJgUULsHaYILrMRL7s2bfhK8nD4HioihYdIWcsDH,-0.042,-85.406,-0.0611,0.147,0.0,0.146,0.5503,-75800,0.9464,difference_acousticness
 "LivePhish, Vol. 12 8/13/96 (Deer Creek Music Center, Noblesville, IN)",The Divided Sky,Phish,7FcShHdjNAE2ENmcZMzW6m0clQsJJsc50s0fspbfaads,0.315,0.162,0.0042,-0.019,-0.222,0.027,0.3592,304453,0.9464,difference_acousticness
+Hampton Comes Alive,Quinn The Eskimo,Phish,4YLvRJgUULsHaYILrMRL7s2bfhK8nD4HioihYdIWcsDH,-0.042,-85.406,-0.0611,0.147,0.0,0.146,0.5503,-75800,0.9464,difference_acousticness
 "LivePhish 2/28/03 (Nassau Coliseum, Uniondale, NY)",Birds of a Feather,Phish,0xCUU7DSGDTVOjiZEyy0md1CRG2mnZoxEaYbJNamPcTn,0.04,-80.019,-0.009,-0.184,0.1104,-0.52,-0.083,275640,0.9463999999999999,difference_instrumentalness
 "LivePhish, Vol. 17 7/15/98 (Portland Meadows, Portland, OR)",Simple,Phish,7hfz0l7Xptbwnsl9yaUj2g0Qv5lNsJnPC8heyBeO4Aiy,-0.093,-5.443,0.0021,0.047,0.166,0.08,0.558,-146507,0.9461,difference_acousticness
 "Live Phish: 8/13/10 Verizon Wireless Music Center, Noblesville, IN",Contact,Phish,5h5Q0jl2I0BIVse00uIyBD2AC3nxEkDtJNBE2pooF4YT,0.321,-7.387,-0.0089,-0.189,0.0022,-0.11,-0.315,8387,0.9460999999999999,difference_energy
@@ -2577,8 +2577,8 @@ LivePhish 10/21/95,Wilson,Phish,5pe0P7lGV3Pp2c9BOlKksj3yJ4KqKWcAIQYv2SdmsVv1,-0.
 "Live Phish: 7/3/10 Verizon Wireless At Encore Park, Alpharetta, GA",Loving Cup,Phish,2KBwelELj648tNPvhIyEGp03RbvHYxotzqscy8LF3bgj,-0.01,-75.421,-0.0089,0.153,0.0002,-0.153,-0.1643,79947,0.48940000000000006,difference_dance
 LivePhish 10/21/95,Harry Hood,Phish,2CQfeQPZE4ReXlUbl0SqZf2yqAQ9RGRLN4wWfSygM2Oh,0.135,10.937,0.0055,0.028,0.097,0.142,-0.081,-239613,0.4885,difference_valence
 "LivePhish, Vol. 10 6/22/94 (Veterans Memorial Auditorium, Columbus, OH)",Llama,Phish,6d7PjDfqOJzqDRmq46UFHh0EmPpF1Y6QtuvOS9G3MtES,0.023,-69.123,-0.0379,-0.139,0.008,-0.235,0.0446,60626,0.48750000000000004,difference_acousticness
-"LivePhish, Vol. 4 6/14/00 (Drum Logos, Fukuoka, Japan)",2001,Phish,7vqbxrRtbISjHHRfTuabGY23T9Xfgo1b3FQXNBHRfe0d,-0.144,8.653,-0.0413,0.145,-0.045,0.033,0.079,562000,0.48729999999999996,difference_dance
 LivePhish 05/08/93,Amazing Grace,Phish,5fMmODpsFk4r6qKluqoFL34OKwF5Rg6Jm2DxU9SvnNab,-0.1777,28.345,-0.0136,0.211,0.0,-0.058,0.027,-72706,0.48729999999999996,difference_dance
+"LivePhish, Vol. 4 6/14/00 (Drum Logos, Fukuoka, Japan)",2001,Phish,7vqbxrRtbISjHHRfTuabGY23T9Xfgo1b3FQXNBHRfe0d,-0.144,8.653,-0.0413,0.145,-0.045,0.033,0.079,562000,0.48729999999999996,difference_dance
 "Live Phish: 8/7/10 Greek Theatre, Berkeley, CA",Twenty Years Later,Phish,49Yd7zXFjp10lSRXRZpyo139oUIdjn1MXrI5mXPZn0aw,0.192,6.469,0.005,-0.126,0.0001,-0.082,-0.0816,132826,0.4867,difference_energy
 Live in Brooklyn,46 Days,Phish,7mEpDcfUnwVFzwamDGbGak2pjQsVltj5FGpLLnWwmsgi,-0.066,-67.172,-0.0379,-0.132,0.0621,-0.163,0.0254,669613,0.4864,difference_instrumentalness
 "LivePhish, Vol. 1 12/14/95 (Broome County Arena, Binghamton, NY)",Slave to the Traffic Light,Phish,29uZ6iFpfj4ef1ufbjpyG46EXlCJMPnjOH9t9j8YVBiH,0.265,9.576,0.0227,-0.069,0.036,0.021,-0.072,-66466,0.4857,difference_energy
@@ -2729,8 +2729,8 @@ LivePhish 12/01/95,Wilson,Phish,41TS2K2un0IA1wAjrFeCFV0hDJabWQHlDUjzREUqDl3d,-0.
 "LivePhish, Vol. 8 7/10/99 (E Centre, Camden, NJ)",When The Circus Comes,Phish,4ZswKLsMmXkdMwxmnZdcR6496bY1rdHgr722wTFLVvsn,-0.098,-4.775,0.0033,0.056,0.0874,0.009,-0.048,123667,0.30169999999999997,difference_instrumentalness
 "LivePhish, Vol. 15 10/31/96 (The Omni, Atlanta, GA)",Swept Away,Phish,29vfi3zcJ2Enp3ermAu6zv1UISOaGmyx6agdjYkXve9R,0.102,6.345,0.0016,-0.105,-0.0321,0.023,-0.036,-6840,0.29969999999999997,difference_energy
 LivePhish 04/02/98,Chalk Dust Torture,Phish,2dST8PfFNa78gtbLXWbKBS3h4xrHz6PXcE4RTel5Xbvo,0.063,7.861,0.0218,0.028,-0.085,-0.092,-0.008,119106,0.29780000000000006,difference_energy
-"LivePhish 2/28/03 (Nassau Coliseum, Uniondale, NY)",Round Room,Phish,552Lu4m9ZwoCXh8zWuO1FM0bIXcdPJWU4FgK0rVa93ZO,0.003,9.861,0.0053,-0.024,0.1954,0.053,0.013,183480,0.2937,difference_instrumentalness
 Live at Madison Square Garden New Year's Eve 1995,The Lizards,Phish,3rOPtat67lZu6Kty6uPfIC4xIvN51DW8Q43GqqFLOFla,-0.169,8.553,-0.0085,0.003,0.0502,0.025,0.038,-32226,0.2937,difference_instrumentalness
+"LivePhish 2/28/03 (Nassau Coliseum, Uniondale, NY)",Round Room,Phish,552Lu4m9ZwoCXh8zWuO1FM0bIXcdPJWU4FgK0rVa93ZO,0.003,9.861,0.0053,-0.024,0.1954,0.053,0.013,183480,0.2937,difference_instrumentalness
 "LivePhish, Vol. 13 10/31/94 (Glens Falls Civic Center, Glens Falls, NY)",Silent in the Morning,Phish,7I6UhGnIdrk9Ht6ledyp0l67s062F1CDHHdWj6901IXj,0.072,3.319,-0.0057,0.059,6.3e-06,-0.034,0.118,-23973,0.28870629999999997,difference_acousticness
 "LivePhish, Vol. 19 7/12/91 (Colonial Theatre, Keene, NH)",Cavern,Phish,2NFEdsZTsTWZiXwE3zJtOe1x6R7e3UqhKNMGBfn1rHZ2,-0.014,4.592,0.059,0.114,0.0,-0.015,0.0833,7387,0.2853,difference_dance
 "LivePhish, Vol. 20 12/29/94 (Providence Civic Center, Providence, RI)",Silent In The Morning,Phish,3u2wgmxlXo0K1QdWaJcdKk2APw1fMjhNQghQA4OLJPtE,0.099,-3.763,-0.0007,-0.106,-0.0002,0.04,-0.035,10666,0.28090000000000004,difference_energy

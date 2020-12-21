@@ -5,11 +5,15 @@
   import { orderby } from "../stores/jukebox.js";
   import { createEventDispatcher } from "svelte";
   import { csv } from "d3-fetch";
-  import { group, descending, ascending } from "d3-array";
+  import { group, descending, ascending, extent } from "d3-array";
+  import { values } from "d3-collection";
   import { selectAll } from "d3-selection";
+  import Dial from "./Dial.svelte";
+  import { scaleLinear } from "d3-scale";
 
   const dispatch = createEventDispatcher();
   let active;
+  let flat_data = [];
   let grouped = [];
   let active_track_key;
   let filename;
@@ -18,7 +22,14 @@
   let artist_songlist;
   const folder_name = "assets/data/final_data_1218/single_rows/";
   const endpoint = ".csv";
+
   $: updateSong($song);
+  let current_metric = "difference_overall";
+  $: current_metric = diff_string.concat($orderby);
+
+  let extent_values;
+  let scale_extent;
+  let scale;
 
   function updateSong(v) {
     dispatch("message", {
@@ -29,16 +40,18 @@
   onMount(() => {
     csv("assets/data/final_data_1218/songlist_wide.csv")
       .then((raw) => {
+        flat_data = raw;
+        updateScale();
         grouped = Array.from(
-          group(raw, (d) => d.artist_name_studio),
+          group(flat_data, (d) => d.artist_name_studio),
           ([artist_name, artist_songlist]) => ({ artist_name, artist_songlist })
         );
-        console.log(grouped);
+        sortData($orderby);
         active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
         filename = folder_name.concat(active_track_key, endpoint);
         csv(filename).then((selected) => {
           $song = selected[0];
-          console.log($song);
+          $song["difference_scaled"] = scale($song[current_metric]);
           updateSong($song);
         });
       })
@@ -59,6 +72,7 @@
     csv(filename)
       .then((selected) => {
         $song = selected[0];
+        $song["difference_scaled"] = scale($song[current_metric]);
         console.log($song);
         updateSong($song);
       })
@@ -69,15 +83,32 @@
 
   function sortData(v) {
     //reorder the data using v as column name
-    variable_name = diff_string.concat($orderby);
     grouped.forEach((g) => {
       artist_songlist = g.artist_songlist;
       console.log(artist_songlist);
       artist_songlist.sort((a, b) =>
-        descending(a[variable_name], b[variable_name])
+        descending(Math.abs(a[current_metric]), Math.abs(b[current_metric]))
       );
     });
+
+    updateScale();
     grouped = grouped;
+  }
+
+  function updateScale() {
+    console.log(current_metric);
+    extent_values = [];
+    flat_data.forEach((d) => extent_values.push(Math.abs(d[current_metric])));
+    console.log("old extent", scale_extent);
+    scale_extent = extent(extent_values);
+    console.log("new extent", scale_extent);
+    scale = scaleLinear(scale_extent, [0, 1]);
+    console.log(scale(0.5));
+
+    flat_data.forEach(
+      (d) => (d["difference_scaled"] = scale(Math.abs(d[current_metric])))
+    );
+    flat_data = flat_data;
   }
 
   $: sortData($orderby);
@@ -95,6 +126,7 @@
               class="track-name"
               on:click="{() => onSelect(v)}">
               {v.track_name_studio}
+              <Dial value="{v['difference_scaled']}" />
             </li>
           {/each}
         {/if}
@@ -106,6 +138,7 @@
             class="track-name"
             on:click="{() => onSelect(v)}">
             {v.track_name_studio}
+            <Dial value="{v['difference_scaled']}" />
           </li>
         {/each}
       {/if}
@@ -117,20 +150,32 @@
 
 <style>
   ul {
-    height: 50vh;
+    height: 80vh;
     overflow-y: scroll;
-    width: 20em;
+    width: 100%;
   }
 
   li.active {
-    background: yellow;
+    background: red;
+    color: var(--off-white);
   }
 
   .artist-name {
-    color: #d24939;
+    color: red;
+    font-weight: bold;
+    font-family: var(--sans);
+    padding-left: 1rem;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    position: sticky;
   }
 
   .track-name {
     padding-left: 3rem;
+    color: var(--off-black);
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(178, 160, 114, 0.2);
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
 </style>

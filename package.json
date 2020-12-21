@@ -13,6 +13,7 @@
 		"archieml": "^0.4.2",
 		"autoprefixer": "^10.0.2",
 		"compression": "^1.7.4",
+		"d3-collection": "^1.0.7",
 		"d3-dsv": "^2.0.0",
 		"d3-fetch": "^2.0.0",
 		"d3-selection": "^2.0.0",
