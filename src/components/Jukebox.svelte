@@ -25,19 +25,19 @@
 </script>
 
 <section class="jukebox">
-  <div class="side">
-    <div class="searchbar">
-      <Searchbar on:message="{handleMessage}" />
+  <div class="top-level">
+    <div class="side">
+      <div class="searchbar">
+        <Searchbar on:message="{handleMessage}" />
+      </div>
+
+      <div class="songlist">
+        <Songlist search_query="{search_string}" />
+      </div>
     </div>
 
-    <div class="songlist">
-      <Songlist search_query="{search_string}" />
-    </div>
-  </div>
-
-  {#if $song}
-    <div class="upper">
-      <section class="playercard">
+    {#if $song}
+      <div class="playercard">
         <div class="player">
           <Player
             preview="{$song.track_preview_url_studio}"
@@ -53,13 +53,20 @@
             art="{$song.live_art_large}"
             label="Live" />
         </div>
-      </section>
+      </div>
+    {/if}
+  </div>
+
+  <div class="bottom-level">
+    <div class="order">
+      <Order />
     </div>
-    <div class="table">
-      <Table />
-    </div>
-  {/if}
-  <Order />
+    {#if $song}
+      <div class="table">
+        <Table />
+      </div>
+    {/if}
+  </div>
 </section>
 
 <style>
@@ -68,33 +75,55 @@
     max-width: 60em;
     margin: 0 auto;
     background-color: #fefbf7;
-  }
-
-  .upper {
-    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
   }
 
   .player {
-    border: 4px solid pink;
+    background-color: #fefbf7;
+  }
+
+  .order {
+    background-color: #fefbf7;
+    padding: 1rem;
   }
 
   .jukebox {
     background-color: #bfb2a2;
-    display: flex;
+    display: block;
   }
 
-  .songlist {
-    background-color: var(--off-white);
+  .side {
     max-width: 20vw;
   }
 
-  .searchbar {
-    background-color: var(--off-white);
-    max-width: fit-content;
-    padding: 20px;
+  .songlist {
+    background-color: #fefbf7;
+    max-width: 100%;
+    margin: 1rem;
   }
+
+  .searchbar {
+    background-color: #fefbf7;
+    max-width: 100%;
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+
   .table {
-    display: block;
     max-width: 50vw;
+    background-color: #fefbf7;
+    margin: 1rem;
+  }
+
+  .top-level {
+    display: flex;
+  }
+
+  .bottom-level {
+    display: inline-flex;
+    position: relative;
   }
 </style>

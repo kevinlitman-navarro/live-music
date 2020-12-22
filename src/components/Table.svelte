@@ -94,49 +94,49 @@
     </thead>
     <tbody>
       <tr>
-        <td>Valence</td>
+        <td class="row-label">Valence</td>
         <td>{$song.valence_studio}</td>
         <td>{$song.valence_live}</td>
         <td>{$song.difference_valence}</td>
       </tr>
       <tr>
-        <td>Energy</td>
+        <td class="row-label">Energy</td>
         <td>{$song.energy_studio}</td>
         <td>{$song.energy_live}</td>
         <td>{$song.difference_energy}</td>
       </tr>
       <tr>
-        <td>Speechiness</td>
+        <td class="row-label">Speechiness</td>
         <td>{$song.speechiness_studio}</td>
         <td>{$song.speechiness_live}</td>
         <td>{$song.difference_speechiness}</td>
       </tr>
       <tr>
-        <td>Tempo</td>
+        <td class="row-label">Tempo</td>
         <td>{$song.tempo_studio}</td>
         <td>{$song.tempo_live}</td>
         <td>{$song.difference_tempo}</td>
       </tr>
       <tr>
-        <td>Acousticness</td>
+        <td class="row-label">Acousticness</td>
         <td>{$song.acousticness_studio}</td>
         <td>{$song.acousticness_live}</td>
         <td>{$song.difference_acousticness}</td>
       </tr>
       <tr>
-        <td>Instrumentalness</td>
+        <td class="row-label">Instrumentalness</td>
         <td>{$song.instrumentalness_studio}</td>
         <td>{$song.instrumentalness_live}</td>
         <td>{$song.difference_instrumentalness}</td>
       </tr>
       <tr>
-        <td>Duration</td>
+        <td class="row-label">Duration</td>
         <td>{$song.duration_studio}</td>
         <td>{$song.duration_live}</td>
         <td>{$song.difference_duration}</td>
       </tr>
       <tr>
-        <td>Overall</td>
+        <td class="row-label">Overall</td>
         <td></td>
         <td></td>
         <td>{$song.difference_overall}</td>

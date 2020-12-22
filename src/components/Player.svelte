@@ -29,24 +29,45 @@
   }
 </script>
 
-<div>
-  <div>
-    <img alt="album cover art" src="{art}" />
-    <p>{label}</p>
+<div class="group">
+  <div class="art">
+    <img class="album" alt="album cover art" src="{art}" />
+    <div class="studio-click" on:click="{playSound}">
+      <Icon name="play-circle" />
+    </div>
   </div>
-  <div id="studio-click" on:click="{playSound}">
-    <Icon name="play-circle" />
-  </div>
+
+  <p class="label">{label}</p>
 </div>
 
 <style>
-  #studio-click {
-    bottom: 320px;
+  .album {
     position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .studio-click {
+    position: absolute;
+  }
+
+  .art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   img {
-    display: block;
+    display: inline;
     border-radius: 10px;
+    min-width: 10.5rem;
+  }
+
+  .label {
+    position: absolute;
+    font-family: var(--sans);
+  }
+
+  .group {
   }
 </style>

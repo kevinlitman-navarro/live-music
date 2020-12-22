@@ -113,4 +113,9 @@
   input[type="radio"]:disabled + label::before {
     background: var(--gray);
   }
+
+  label {
+    font-weight: bold;
+    font-family: var(--sans);
+  }
 </style>

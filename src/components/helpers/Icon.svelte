@@ -25,10 +25,11 @@
 
 <style>
   svg {
-    width: 8em;
-    height: 8em;
+    width: 6em;
+    height: 6em;
     overflow: visible;
     transform-origin: 50% 50%;
     z-index: 100;
+    color: var(--off-white);
   }
 </style>

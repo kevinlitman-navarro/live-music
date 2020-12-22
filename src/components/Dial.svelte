@@ -4,7 +4,6 @@
 </script>
 
 <div class="labels">
-  {value}
   <div class="knob" style="transform:rotate({r}deg)">
     <div class="line"></div>
   </div>
