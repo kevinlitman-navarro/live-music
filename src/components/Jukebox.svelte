@@ -6,11 +6,17 @@
   import Order from "./Order.svelte";
   import Songlist from "./Songlist.svelte";
   import Namecard from "./Namecard.svelte";
+  import Legend from "./Legend.svelte";
+  import Chart from "./Chart.svelte";
 
   let data = [];
   let search_string;
+  let active_artist = "Bob Dylan";
+  let active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
+  let active_artist_list;
+  let scale;
 
-  function handleMessage(event) {
+  function updateSearchString(event) {
     search_string = event.detail.text.toLowerCase();
     console.log(search_string);
     data = data.filter((d) =>
@@ -18,21 +24,25 @@
     );
   }
 
-  // function updateList(event) {
-  //   console.log(event.detail.text);
-  //   console.log($song);
-  // }
+  function updateChartParameters(event) {
+    active_artist = event.detail.text.artist_name_studio;
+    active_track_key = event.detail.text.track_key;
+    active_artist_list = event.detail.active_artist_list;
+    scale = event.detail.scale;
+  }
 </script>
 
 <section class="jukebox">
   <div class="top-level">
     <div class="side">
       <div class="searchbar">
-        <Searchbar on:message="{handleMessage}" />
+        <Searchbar on:message="{updateSearchString}" />
       </div>
 
       <div class="songlist">
-        <Songlist search_query="{search_string}" />
+        <Songlist
+          search_query="{search_string}"
+          on:message="{updateChartParameters}" />
       </div>
     </div>
 
@@ -57,9 +67,20 @@
     {/if}
   </div>
 
+  <div class="middle-level">
+    <Chart
+      active_artist="{active_artist}"
+      active_track_key="{active_track_key}"
+      active_artist_songlist="{active_artist_list}"
+      scale="{scale}" />
+  </div>
+
   <div class="bottom-level">
     <div class="order">
       <Order />
+    </div>
+    <div class="legend">
+      <Legend />
     </div>
     {#if $song}
       <div class="table">
@@ -116,6 +137,11 @@
     max-width: 50vw;
     background-color: #fefbf7;
     margin: 1rem;
+  }
+
+  .legend {
+    background-color: #d24939;
+    color: #fefbf7;
   }
 
   .top-level {
