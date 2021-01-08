@@ -1,6 +1,7 @@
 <script>
   export let search_query;
   import { song } from "../stores/jukebox.js";
+  import { globalScale } from "../stores/jukebox.js";
   import { onMount } from "svelte";
   import { orderby } from "../stores/jukebox.js";
   import { createEventDispatcher } from "svelte";
@@ -24,7 +25,6 @@
   const folder_name = "assets/data/final_data_1218/single_rows/";
   const endpoint = ".csv";
 
-  $: updateSong($song);
   let current_metric = "difference_overall";
   $: current_metric = diff_string.concat($orderby);
 
@@ -68,6 +68,7 @@
             active_artist_list = grouped.find(
               (d) => d.artist_name == $song.artist_name_studio
             );
+            console.log(active_artist_list);
           })
           .then(() => {
             updateSong($song);
@@ -95,7 +96,7 @@
         active_artist_list = grouped.find(
           (d) => d.artist_name == $song.artist_name_studio
         );
-        console.log(active_artist_list);
+        console.log(active_artist_list.artist_songlist);
       })
       .then(() => {
         updateSong($song);
@@ -127,6 +128,7 @@
     scale_extent = extent(extent_values);
     console.log("new extent", scale_extent);
     scale = scaleLinear(scale_extent, [0, 1]);
+    $globalScale = scale;
     flat_data.forEach(
       (d) => (d["difference_scaled"] = scale(Math.abs(d[current_metric])))
     );

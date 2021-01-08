@@ -45,6 +45,7 @@
 		"start": "sirv public --host"
 	},
 	"dependencies": {
+		"d3-force": "^2.1.1",
 		"howler": "^2.2.1"
 	}
 }

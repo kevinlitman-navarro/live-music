@@ -68,11 +68,9 @@
   </div>
 
   <div class="middle-level">
-    <Chart
-      active_artist="{active_artist}"
-      active_track_key="{active_track_key}"
-      active_artist_songlist="{active_artist_list}"
-      scale="{scale}" />
+    {#if active_artist_list}
+      <Chart active_artist_songlist="{active_artist_list}" scale="{scale}" />
+    {/if}
   </div>
 
   <div class="bottom-level">
