@@ -40,12 +40,6 @@
     });
   }
 
-  // function sendScale(v) {
-  //   dispatch("message", {
-  //     text: v,
-  //   });
-  // }
-
   onMount(() => {
     csv("assets/data/final_data_1218/songlist_wide.csv")
       .then((raw) => {
@@ -53,7 +47,20 @@
         updateScale();
         grouped = Array.from(
           group(flat_data, (d) => d.artist_name_studio),
-          ([artist_name, artist_songlist]) => ({ artist_name, artist_songlist })
+          ([artist_name, artist_songlist]) => ({
+            artist_name,
+            artist_songlist: artist_songlist.map((d) => ({
+              ...d,
+              difference_valence: +d.difference_valence,
+              difference_energy: +d.difference_energy,
+              difference_acousticness: +d.difference_acousticness,
+              difference_duration: +d.difference_duration,
+              difference_tempo: +d.difference_tempo,
+              difference_speechiness: +d.difference_speechiness,
+              difference_dance: +d.difference_dance,
+              difference_instrumentalness: +d.difference_instrumentalness,
+            })),
+          })
         );
         sortData($orderby);
         active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";

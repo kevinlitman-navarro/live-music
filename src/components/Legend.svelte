@@ -3,4 +3,8 @@
 </h2>
 
 <style>
+  h2 {
+    text-align: center;
+    font-family: serif;
+  }
 </style>

@@ -1,20 +1,12 @@
 <script>
   // Import the getContext function from svelte
   import { getContext } from "svelte";
-  import { select, selectAll } from "d3-selection";
   import { csv } from "d3-fetch";
   import { orderby } from "../../stores/jukebox";
-  import {
-    forceSimulation,
-    forceLink,
-    forceManyBody,
-    forceCenter,
-    forceX,
-    forceY,
-    forceCollide,
-  } from "d3-force";
+  import { forceSimulation, forceX, forceY, forceCollide } from "d3-force";
   import { song } from "../../stores/jukebox";
   import { globalScale } from "../../stores/jukebox";
+  import { onMount } from "svelte";
 
   // Access the context using the 'LayerCake' keyword
   // Grab some helpful functions
@@ -22,22 +14,21 @@
 
   //export let fill = "#D24939";
   let highlight = "#000";
-  export let r = 20;
-  let figureHeight = window.innerHeight;
-  export let yValue = figureHeight / 2;
+  export let r;
+  export let figureHeight = 300;
   $: console.log($song);
+  let mounted = false;
 
   const diff_string = "difference_";
   let current_metric = "difference_overall";
   $: current_metric = diff_string.concat($orderby);
+  $: console.log(current_metric);
 
   let datapoints;
   let circlePositions = [];
   let simulation;
   let createSimulation = () => {
     if ($data) {
-      // datapoints = Array.from(selectAll(".point")["_groups"][0]);
-      // console.log(datapoints);
       let simulationData = [
         ...$data.map((d) => ({
           ...d,
@@ -59,33 +50,21 @@
           circlePositions = [...simulationData];
         });
 
-      // .on("tick", function (d) {
-      //   node
-      //     .attr("cx", function (d) {
-      //       return d.x;
-      //     })
-      //     .attr("cy", function (d) {
-      //       return d.y;
-      //     });
-      // });
-      console.log(simulationData);
-      // simulationData.forEach((d) => {
-      //   //console.log(d.getAttribute("track_key"));
-
-      //   if (d.getAttribute("track_key") == $song.track_key) {
-      //     console.log(d, "success!");
-      //     d.setAttribute("fill", highlight);
-      //   } else {
-      //     d.setAttribute("fill", fill);
-      //   }
-      // });
+      console.log($xScale.domain());
     }
   };
-  $: $data, $orderby, createSimulation();
 
-  // function isActive(track_key) {
-  //   let fill = ;
-  // }
+  onMount(() => {
+    setTimeout(() => {
+      createSimulation();
+    }, 1000);
+    setTimeout(() => {
+      mounted = true;
+    }, 1000);
+  });
+
+  $: $data, $x, createSimulation();
+  $: console.log($xScale.domain());
 
   let active_track_key;
   const folder_name = "assets/data/final_data_1218/single_rows/";
@@ -102,23 +81,23 @@
       console.log($song.artist_name_studio);
     });
   }
-
-  let tooltip;
 </script>
 
-{#each circlePositions as d}
-  <g class="point-wrapper">
-    <circle
-      class="point"
-      cx="{d.x}"
-      cy="{d.y}"
-      fill="{d.track_key == $song.track_key ? '#BB86FC' : '#D24939'}"
-      on:click="{handleClick}"
-      track_key="{d.track_key}"
-      r="{r}"></circle>
-    <text class="tooltip">{d.track_name_studio}</text>
-  </g>
-{/each}
+{#if mounted}
+  {#each circlePositions as d}
+    <g class="point-wrapper">
+      <circle
+        class="point"
+        cx="{d.x}"
+        cy="{d.y}"
+        fill="{d.track_key == $song.track_key ? '#BB86FC' : '#D24939'}"
+        on:click="{handleClick}"
+        track_key="{d.track_key}"
+        r="{r}"></circle>
+      <text class="tooltip">{d.track_name_studio}</text>
+    </g>
+  {/each}
+{/if}
 
 <style>
   .point-wrapper {

@@ -33,58 +33,65 @@
 </script>
 
 <section class="jukebox">
-  <div class="top-level">
-    <div class="side">
-      <div class="searchbar">
-        <Searchbar on:message="{updateSearchString}" />
-      </div>
-
+  <div class="column1">
+    <div class="searchbar">
+      <Searchbar on:message="{updateSearchString}" />
       <div class="songlist">
         <Songlist
           search_query="{search_string}"
           on:message="{updateChartParameters}" />
       </div>
     </div>
+  </div>
+  <div class="column2">
+    <div class="top-level">
+      <div class="side"></div>
 
-    {#if $song}
-      <div class="playercard">
-        <div class="player">
-          <Player
-            preview="{$song.track_preview_url_studio}"
-            art="{$song.studio_art_large}"
-            label="Studio" />
+      {#if $song}
+        <div class="playercard">
+          <div class="player">
+            <Player
+              preview="{$song.track_preview_url_studio}"
+              art="{$song.studio_art_large}"
+              label="Studio" />
+          </div>
+          <div class="namecard">
+            <Namecard />
+          </div>
+          <div class="player">
+            <Player
+              preview="{$song.track_preview_url_live}"
+              art="{$song.live_art_large}"
+              label="Live" />
+          </div>
         </div>
-        <div class="namecard">
-          <Namecard />
+      {/if}
+    </div>
+
+    <div class="middle-level">
+      {#if active_artist_list}
+        <Chart active_artist_songlist="{active_artist_list}" />
+      {/if}
+    </div>
+
+    <div class="bottom-level">
+      <div class="column3">
+        <div class="order">
+          <Order />
         </div>
-        <div class="player">
-          <Player
-            preview="{$song.track_preview_url_live}"
-            art="{$song.live_art_large}"
-            label="Live" />
+        <div class="legend">
+          <Legend />
         </div>
       </div>
-    {/if}
-  </div>
 
-  <div class="middle-level">
-    {#if active_artist_list}
-      <Chart active_artist_songlist="{active_artist_list}" scale="{scale}" />
-    {/if}
-  </div>
-
-  <div class="bottom-level">
-    <div class="order">
-      <Order />
-    </div>
-    <div class="legend">
-      <Legend />
-    </div>
-    {#if $song}
-      <div class="table">
-        <Table />
+      <div class="column4">
+        {#if $song}
+          <div class="table">
+            <Table />
+          </div>
+        {/if}
       </div>
-    {/if}
+    </div>
   </div>
 </section>
 
@@ -111,7 +118,22 @@
 
   .jukebox {
     background-color: #bfb2a2;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    max-width: 82rem;
+    margin: 0 auto;
+  }
+
+  .column1 {
+    display: flex;
+    flex-direction: column;
+    min-width: 24rem;
+    align-items: center;
+  }
+
+  .column2 {
+    display: flex;
+    flex-direction: column;
   }
 
   .side {
@@ -146,8 +168,16 @@
     display: flex;
   }
 
+  .middle-level {
+    display: flex;
+  }
+
   .bottom-level {
-    display: inline-flex;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .column3 {
+    max-width: 14rem;
   }
 </style>
