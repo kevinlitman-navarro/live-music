@@ -33,6 +33,7 @@
   let extent_values;
   let scale_extent;
   let scale;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
   function updateSong(v) {
     dispatch("message", {
@@ -52,6 +53,9 @@
         csv("assets/data/final_data_0107/songlist_wide_optimized.csv").then(
           (raw) => {
             flat_data = raw;
+            //       sorted = flat_data.sort((a, b) =>
+            //   descending(Math.abs(a[current_metric]), Math.abs(b[current_metric]))
+            // );
             console.log("flat", flat_data);
             updateScale();
             grouped = Array.from(
@@ -61,6 +65,13 @@
                 artist_name_studio: artistDictionary.find(
                   (a) => a.artist_id == artist_id
                 )["artist_name_studio"],
+                // test: flat_data
+                //   .filter((b) => {
+                //     return b.artist_id == artist_id;
+                //   })
+                //   .map((g) => Math.abs(+g[current_metric]))
+                //   .reduce(reducer),
+
                 artist_songlist: artist_songlist.map((d) => ({
                   ...d,
                   difference_valence: +d.difference_valence,
@@ -161,6 +172,13 @@
       (d) => (d["difference_scaled"] = scale(Math.abs(d[current_metric])))
     );
     flat_data = flat_data;
+    // grouped.forEach(
+    //   (d) =>
+    //     (d.test = d.artist_songlist
+    //       .map((g) => Math.abs(+g[current_metric]))
+    //       .reduce(reducer))
+    // );
+    // console.log(grouped);
   }
 
   let visible_track_keys = [];
@@ -238,15 +256,17 @@
     font-weight: bold;
     font-family: var(--sans);
     padding-left: 1rem;
-    font-size: 1.8em;
+    padding-bottom: 0.4rem;
+    font-size: 1.4em;
     text-transform: uppercase;
     position: sticky;
+    cursor: pointer;
   }
 
   .track-name {
     padding-left: 3rem;
     color: var(--off-black);
-    font-size: 1.1em;
+    font-size: 1em;
     border-bottom: 1px solid rgba(178, 160, 114, 0.2);
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;

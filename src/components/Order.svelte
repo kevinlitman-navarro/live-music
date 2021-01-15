@@ -19,7 +19,7 @@
   <div>Order By</div>
   <div>
     <Radio
-      buttons="{[overall, tempo, energy, valence, duration, danceability, acousticness, speechiness, instrumentalness]}" />
+      buttons="{[overall, energy, valence, duration, danceability, acousticness, instrumentalness]}" />
   </div>
 </div>
 

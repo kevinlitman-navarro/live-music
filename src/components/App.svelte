@@ -9,8 +9,9 @@
 </script>
 
 <Meta />
-
-<Header />
+<section class="header">
+  <Header />
+</section>
 
 <section class="story">
   <section class="intro">
@@ -27,14 +28,19 @@
 <Footer />
 
 <style>
-  .story {
+  .header {
+    background-color: var(--text-main);
+  }
+  .jukebox {
     background-color: #bfb2a2;
   }
 
   .intro {
-    max-width: 50%;
+    max-width: 100%;
     position: flex;
     margin: auto;
     padding-top: 1rem;
+    background-color: #fefbf7;
+    padding-bottom: 2rem;
   }
 </style>

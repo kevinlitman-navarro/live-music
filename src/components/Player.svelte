@@ -30,12 +30,14 @@
 </script>
 
 <div class="group">
-  <div class="art">
-    <img class="album" alt="album cover art" src="{art}" />
-    <div class="studio-click" on:click="{playSound}">
-      <Icon name="play-circle" />
+  {#key art}
+    <div class="art">
+      <img class="album" alt="album cover art" src="{art}" />
+      <div class="studio-click" on:click="{playSound}">
+        <Icon name="play-circle" />
+      </div>
     </div>
-  </div>
+  {/key}
 
   <span class="label">{label}</span>
 </div>
@@ -55,6 +57,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation-name: spin;
+    animation-duration: 800ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   img {

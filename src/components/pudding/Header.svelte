@@ -16,7 +16,7 @@
 
   .wordmark a {
     border: none;
-    color: var(--fg);
+    color: var(--background-body);
   }
 
   .wordmark a:hover {
