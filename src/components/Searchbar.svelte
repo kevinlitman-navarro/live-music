@@ -1,23 +1,13 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import accessibleAutocomplete from "accessible-autocomplete";
+  import AutoComplete from "simple-svelte-autocomplete";
+
   import artistDictionary from "../data/artist_dictionary.csv";
   let artist_list = [];
   import { onMount } from "svelte";
+  import Axis from "./Axis.svelte";
   let value;
   const dispatch = createEventDispatcher();
-
-  onMount(() => {
-    accessibleAutocomplete({
-      element: document.querySelector("#my-autocomplete-container"),
-      id: "my-autocomplete", // To match it to the existing <label>.
-      source: artistDictionary.map((d) => d.artist_name_studio),
-      onConfirm(name) {
-        value = name;
-      },
-      placeholder: "Artist Search",
-    });
-  });
 
   function search(v) {
     console.log(v);
@@ -29,8 +19,9 @@
   $: search(value);
 </script>
 
-<label for="my-autocomplete"></label>
-<div id="my-autocomplete-container"></div>
+<AutoComplete
+  items="{artistDictionary.map((d) => d.artist_name_studio)}"
+  bind:selectedItem="{value}" />
 
 <style>
   input {

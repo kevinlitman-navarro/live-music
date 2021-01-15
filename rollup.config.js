@@ -9,6 +9,7 @@ import hmr from "rollup-plugin-hot";
 import execute from "rollup-plugin-execute";
 import { terser } from "rollup-plugin-terser";
 
+
 const isWatch = !!process.env.ROLLUP_WATCH;
 const isLiveReload = !!process.env.LIVERELOAD;
 const isDev = isWatch || isLiveReload;

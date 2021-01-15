@@ -24,7 +24,7 @@ export default {
       generate: "ssr",
       preprocess
     }),
-    resolve({
+    resolve({ 
       browser: true,
       dedupe: ["svelte"]
     }),

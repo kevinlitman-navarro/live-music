@@ -166,21 +166,11 @@
   let visible_track_keys = [];
   const identifier = "#";
 
-  function showTracks(d) {
-    artist_songlist = d.artist_songlist;
-    visible_track_keys = artist_songlist.map((v) =>
-      identifier.concat(v.track_key)
-    );
-    visible_track_keys.forEach((g) => {
-      console.log(g);
-      let x = document.getElementById(g);
-      console.log(x);
-    });
-  }
   let current = "Bob Dylan";
   $: sortData($orderby);
 </script>
 
+<p>Click an artist to explore their songs</p>
 {#if grouped.length}
   <ul>
     {#each grouped as d}
