@@ -67,7 +67,7 @@
   $: console.log($xScale.domain());
 
   let active_track_key;
-  const folder_name = "assets/data/final_data_1218/single_rows/";
+  const folder_name = "assets/data/final_data_0107/single_rows/";
   const endpoint = ".csv";
   let filename;
 
@@ -94,7 +94,10 @@
         on:click="{handleClick}"
         track_key="{d.track_key}"
         r="{r}"></circle>
-      <text class="tooltip">{d.track_name_studio}</text>
+
+      <text class="tooltip" transform="translate({d.x},{d.y})">
+        {d.track_name_studio}
+      </text>
     </g>
   {/each}
 {/if}
@@ -103,6 +106,10 @@
   .point-wrapper {
     position: relative;
   }
+
+  /* .tooltip-wrapper {
+    background-color: white;
+  } */
   .tooltip {
     display: none;
     width: 120px;
@@ -111,6 +118,7 @@
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
+    pointer-events: none;
 
     /* Position the tooltip text - see examples below! */
     position: absolute;

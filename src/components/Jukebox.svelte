@@ -16,8 +16,15 @@
   let active_artist_list;
   let scale;
 
+  //$: console.log(flat_data);
+
   function updateSearchString(event) {
-    search_string = event.detail.text.toLowerCase();
+    if (event.detail.text) {
+      search_string = event.detail.text.toLowerCase();
+    } else {
+      search_string = undefined;
+    }
+
     console.log(search_string);
     data = data.filter((d) =>
       d.artist_name_studio.toLowerCase().includes({ search_string })
@@ -53,7 +60,7 @@
             <Player
               preview="{$song.track_preview_url_studio}"
               art="{$song.studio_art_large}"
-              label="Studio" />
+              label="STUDIO" />
           </div>
           <div class="namecard">
             <Namecard />
@@ -62,7 +69,7 @@
             <Player
               preview="{$song.track_preview_url_live}"
               art="{$song.live_art_large}"
-              label="Live" />
+              label="LIVE" />
           </div>
         </div>
       {/if}
@@ -166,15 +173,18 @@
 
   .top-level {
     display: flex;
+    margin: 1.2rem;
   }
 
   .middle-level {
     display: flex;
+    margin: 1.2rem;
   }
 
   .bottom-level {
     display: flex;
     flex-direction: row;
+    margin: 1.2rem;
   }
 
   .column3 {

@@ -20,3 +20,6 @@
 <div class="namecard">
   {@html namecard}
 </div>
+
+<style>
+</style>

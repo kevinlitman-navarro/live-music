@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <p class="label">{label}</p>
+  <span class="label">{label}</span>
 </div>
 
 <style>
@@ -66,6 +66,8 @@
   .label {
     position: absolute;
     font-family: var(--sans);
+    text-transform: capitalize;
+    text-align: center;
   }
 
   .group {

@@ -17,6 +17,7 @@
 		"d3-dsv": "^2.0.0",
 		"d3-fetch": "^2.0.0",
 		"d3-selection": "^2.0.0",
+		"enter-view": "^2.0.1",
 		"feather-icons": "^4.28.0",
 		"html-minifier": "^4.0.0",
 		"layercake": "^3.1.1",
