@@ -4,6 +4,8 @@
   import { globalScale } from "../stores/jukebox.js";
   import { onMount } from "svelte";
   import { orderby } from "../stores/jukebox.js";
+  import { active_artist } from "../stores/jukebox.js";
+  import { ready } from "../stores/jukebox.js";
   import { createEventDispatcher } from "svelte";
   import { csv } from "d3-fetch";
   import { group, descending, ascending, extent } from "d3-array";
@@ -15,6 +17,7 @@
 
   const dispatch = createEventDispatcher();
   let active;
+  let mounted = false;
   let trackDictionary;
   let flat_data = [];
   let grouped = [];
@@ -23,6 +26,7 @@
   let variable_name;
   const diff_string = "difference_";
   let artist_songlist;
+  let active_artist_name;
   let active_artist_list;
   const folder_name = "assets/data/final_data_0107/single_rows/";
   const endpoint = ".csv";
@@ -90,6 +94,7 @@
             console.log("grouped", grouped);
             sortData($orderby);
             active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
+            active_artist_name = grouped[0].artist_name_studio;
             filename = folder_name.concat(active_track_key, endpoint);
             csv(filename)
               .then((selected) => {
@@ -105,6 +110,9 @@
               })
               .then(() => {
                 updateSong($song);
+                $ready = true;
+                console.log("should appear now");
+                mounted = true;
               })
               .catch((error) => {
                 console.log(error);
@@ -144,6 +152,35 @@
         console.log(error);
       });
   }
+
+  function onArtistChange() {
+    if (mounted) {
+      active_artist_list = grouped.find(
+        (d) =>
+          d.artist_id ==
+          artistDictionary.find((g) => g.artist_name_studio == $active_artist)[
+            "artist_id"
+          ]
+      );
+      active_track_key = active_artist_list.artist_songlist[0].track_key;
+      filename = folder_name.concat(active_track_key, endpoint);
+
+      csv(filename)
+        .then((selected) => {
+          $song = selected[0];
+          $song["difference_scaled"] = scale($song[current_metric]);
+          console.log($song.artist_name_studio);
+        })
+        .then(() => {
+          updateSong($song);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
+  $: $active_artist, onArtistChange();
 
   function sortData(v) {
     //reorder the data using v as column name
@@ -192,35 +229,35 @@
 {#if grouped.length}
   <ul>
     {#each grouped as d}
-      {#if search_query}
-        {#if d.artist_name_studio.toLowerCase() == search_query}
-          <li
-            class="artist-name"
-            on:click="{() => (current = d.artist_name_studio)}">
-            {d.artist_name_studio}
-          </li>
-          {#each d.artist_songlist as v}
-            <li
-              class:active="{active === v.track_key}"
-              class:selected="{current === d.artist_name_studio}"
-              id="{v.track_key}"
-              class="track-name"
-              on:click="{() => onSelect(v)}">
-              {v.track_name_studio}
-              <Dial value="{v['difference_scaled']}" />
-            </li>
-          {/each}
-        {/if}
-      {:else}
+      <!-- {#if search_query} -->
+      <!-- {#if d.artist_name_studio.toLowerCase() == search_query} -->
+      <li
+        class="artist-name"
+        on:click="{() => ($active_artist = d.artist_name_studio)}">
+        {d.artist_name_studio}
+      </li>
+      {#each d.artist_songlist as v}
+        <li
+          class:active="{active === v.track_key}"
+          class:selected="{$active_artist === d.artist_name_studio}"
+          id="{v.track_key}"
+          class="track-name"
+          on:click="{() => onSelect(v)}">
+          {v.track_name_studio}
+          <Dial value="{v['difference_scaled']}" />
+        </li>
+      {/each}
+      <!-- {/if} -->
+      <!-- {:else}
         <li
           class="artist-name"
-          on:click="{() => (current = d.artist_name_studio)}">
+          on:click="{() => ($active_artist = d.artist_name_studio)}">
           {d.artist_name_studio}
         </li>
         {#each d.artist_songlist as v}
           <li
             class:active="{active === v.track_key}"
-            class:selected="{current === d.artist_name_studio}"
+            class:selected="{$active_artist === d.artist_name_studio}"
             id="{v.track_key}"
             class="track-name"
             on:click="{() => onSelect(v)}">
@@ -228,7 +265,7 @@
             <Dial value="{v['difference_scaled']}" />
           </li>
         {/each}
-      {/if}
+      {/if} -->
     {/each}
   </ul>
 {:else}

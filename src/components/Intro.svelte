@@ -2,6 +2,7 @@
   import copy from "../data/copy.json";
   import Player from "./Player.svelte";
   import { song } from "../stores/jukebox.js";
+  import { ready } from "../stores/jukebox.js";
   import Namecard from "./Namecard.svelte";
 </script>
 
@@ -23,7 +24,9 @@
   <p>{copy.BD2}</p>
   <p>{copy.BD3}</p>
   {#if $song}
-    <div class="playercard">
+    <div
+      class="playercard"
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/fc1dd43539f9fbdaa17a4b012d61d50864e6f1fa?cid=57a57fe2e5b44b2bab703613bb86725e"
@@ -64,6 +67,7 @@
 
   .playercard {
     display: flex;
+    visibility: hidden;
     max-width: 60em;
     margin: 0 auto;
     background-color: #fefbf7;

@@ -4,6 +4,7 @@
   import Header from "./pudding/Header.svelte";
   import Footer from "./pudding/Footer.svelte";
   import Jukebox from "./Jukebox.svelte";
+  import { ready } from "../stores/jukebox.js";
   import Intro from "./Intro.svelte";
   import Methods from "./Methods.svelte";
 </script>
@@ -17,8 +18,15 @@
   <section class="intro">
     <Intro />
   </section>
-  <section class="jukebox">
-    <Jukebox />
+  <section class="jukebox-container">
+    {#if !$ready}
+      <p>loading jukebox</p>
+    {/if}
+    <section
+      class="jukebox"
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      <Jukebox />
+    </section>
   </section>
   <section class="methods">
     <Methods />
@@ -33,6 +41,7 @@
   }
   .jukebox {
     background-color: #bfb2a2;
+    visibility: hidden;
   }
 
   .intro {

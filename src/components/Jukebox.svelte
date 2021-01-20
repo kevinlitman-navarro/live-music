@@ -1,5 +1,7 @@
 <script>
   import { song } from "../stores/jukebox.js";
+  import { ready } from "../stores/jukebox.js";
+  import { active_artist } from "../stores/jukebox.js";
   import Player from "./Player.svelte";
   import Table from "./Table.svelte";
   import Searchbar from "./Searchbar.svelte";
@@ -11,7 +13,7 @@
 
   let data = [];
   let search_string;
-  let active_artist = "Bob Dylan";
+  let active_artist_chart = "Bob Dylan";
   let active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
   let active_artist_list;
   let scale;
@@ -20,19 +22,20 @@
 
   function updateSearchString(event) {
     if (event.detail.text) {
-      search_string = event.detail.text.toLowerCase();
+      search_string = event.detail.text;
+      $active_artist = search_string;
     } else {
       search_string = undefined;
     }
 
-    console.log(search_string);
-    data = data.filter((d) =>
-      d.artist_name_studio.toLowerCase().includes({ search_string })
-    );
+    // console.log(search_string);
+    // data = data.filter((d) =>
+    //   d.artist_name_studio.toLowerCase().includes({ search_string })
+    // );
   }
 
   function updateChartParameters(event) {
-    active_artist = event.detail.text.artist_name_studio;
+    active_artist_chart = event.detail.text.artist_name_studio;
     active_track_key = event.detail.text.track_key;
     active_artist_list = event.detail.active_artist_list;
     scale = event.detail.scale;

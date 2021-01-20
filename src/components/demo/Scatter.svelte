@@ -2,15 +2,19 @@
   // Import the getContext function from svelte
   import { getContext } from "svelte";
   import { csv } from "d3-fetch";
-  import { orderby } from "../../stores/jukebox";
+  import { orderby } from "../../stores/jukebox.js";
   import { forceSimulation, forceX, forceY, forceCollide } from "d3-force";
-  import { song } from "../../stores/jukebox";
-  import { globalScale } from "../../stores/jukebox";
+  import { song } from "../../stores/jukebox.js";
+  import { tooltip_text } from "../../stores/jukebox.js";
+  import { globalScale } from "../../stores/jukebox.js";
   import { onMount } from "svelte";
+  import { createEventDispatcher } from "svelte";
+  //import { tooltip } from "svelte";
 
   // Access the context using the 'LayerCake' keyword
   // Grab some helpful functions
   const { data, x, xScale, y, yScale } = getContext("LayerCake");
+  const dispatch = createEventDispatcher();
 
   //export let fill = "#D24939";
   let highlight = "#000";
@@ -81,11 +85,41 @@
       console.log($song.artist_name_studio);
     });
   }
+
+  let current_x;
+  let current_y;
+  let show = false;
+
+  let updateMessage = () => {
+    dispatch("message", {
+      current_x,
+      current_y,
+      show,
+    });
+  };
+
+  function handleMouseout() {
+    show = false;
+    updateMessage();
+  }
+
+  function handleMouseover(d) {
+    show = true;
+    $tooltip_text = d.track_name_studio;
+    console.log(d.x);
+    current_x = d.x;
+    current_y = d.y;
+
+    updateMessage();
+  }
 </script>
 
 {#if mounted}
   {#each circlePositions as d}
-    <g class="point-wrapper">
+    <g
+      class="point-wrapper"
+      on:mouseenter="{handleMouseover(d)}"
+      on:mouseout="{handleMouseout}">
       <circle
         class="point"
         cx="{d.x}"
@@ -94,10 +128,6 @@
         on:click="{handleClick}"
         track_key="{d.track_key}"
         r="{r}"></circle>
-
-      <text class="tooltip" transform="translate({d.x},{d.y})">
-        {d.track_name_studio}
-      </text>
     </g>
   {/each}
 {/if}
@@ -105,6 +135,7 @@
 <style>
   .point-wrapper {
     position: relative;
+    pointer-events: all;
   }
 
   /* .tooltip-wrapper {
