@@ -26,7 +26,7 @@
   let artist_songlist;
   let active_artist_name;
   let active_artist_list;
-  const folder_name = "assets/data/final_data_0107/single_rows/";
+  const folder_name = "assets/data/final_data_0128/single_rows/";
   const endpoint = ".csv";
 
   let current_metric = "difference_overall";
@@ -82,6 +82,7 @@
                   difference_duration: +d.difference_duration,
                   difference_dance: +d.difference_dance,
                   difference_instrumentalness: +d.difference_instrumentalness,
+                  difference_liveness: +d.difference_liveness,
                   // track_name_id,
                   track_name_studio: trackDictionary.find(
                     (a) => a.track_name_id == d.track_name_id

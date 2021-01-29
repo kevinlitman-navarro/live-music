@@ -138,6 +138,7 @@
   .order {
     background-color: #fefbf7;
     padding: 1rem;
+    max-height: 20vw;
   }
 
   .jukebox {
@@ -153,11 +154,22 @@
     flex-direction: column;
     min-width: 24rem;
     align-items: center;
+    margin-right: 0.5em;
   }
 
   .column2 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 90vh;
+    margin-left: 0.5em;
+  }
+
+  .column3 {
+    max-height: 30vh;
+  }
+
+  .column2 > div {
   }
 
   .side {
@@ -166,7 +178,7 @@
 
   .songlist {
     background-color: #fefbf7;
-    max-width: 100%;
+    max-width: 20vw;
     margin: 1rem;
   }
 
@@ -181,28 +193,32 @@
     max-width: 50vw;
     background-color: #fefbf7;
     margin: 1rem;
+    max-height: 30vh;
+    padding-top: 2px;
   }
 
   .legend {
     background-color: #d24939;
     color: #fefbf7;
     padding: 0 0.1rem 0 0.1rem;
+    max-height: 10vh;
   }
 
   .top-level {
     display: flex;
-    margin: 1.2rem;
+    margin: 1em;
+    margin-top: 0em;
   }
 
   .middle-level {
     display: flex;
-    margin: 1.2rem;
+    margin: 1em;
   }
 
   .bottom-level {
     display: flex;
     flex-direction: row;
-    margin: 1.2rem;
+    margin: 1em;
   }
 
   .column3 {

@@ -6,12 +6,12 @@
   const energy = { name: "Energy", label: "Energy" };
   const valence = { name: "Valence", label: "Valence" };
   const duration = { name: "Duration", label: "Duration" };
-  const danceability = { name: "Dance", label: "Danceability" };
+  const liveness = { name: "Liveness", label: "Liveness" };
   const acousticness = { name: "Acousticness", label: "Acousticness" };
   const speechiness = { name: "Speechiness", label: "Speechiness" };
   const instrumentalness = {
     name: "Instrumentalness",
-    label: "Instrumentalness",
+    label: "Instrumentals",
   };
 </script>
 
@@ -19,7 +19,7 @@
   <div>Order By</div>
   <div>
     <Radio
-      buttons="{[overall, energy, valence, duration, danceability, acousticness, instrumentalness]}" />
+      buttons="{[overall, energy, valence, duration, acousticness, instrumentalness]}" />
   </div>
 </div>
 

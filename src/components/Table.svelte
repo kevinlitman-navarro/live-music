@@ -95,51 +95,57 @@
     <tbody>
       <tr>
         <td class="row-label">Valence</td>
-        <td>{$song.valence_studio}</td>
-        <td>{$song.valence_live}</td>
-        <td>{$song.difference_valence}</td>
+        <td>{parseFloat($song.valence_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.valence_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_valence).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Energy</td>
-        <td>{$song.energy_studio}</td>
-        <td>{$song.energy_live}</td>
-        <td>{$song.difference_energy}</td>
+        <td>{parseFloat($song.energy_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.energy_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_energy).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Speechiness</td>
-        <td>{$song.speechiness_studio}</td>
-        <td>{$song.speechiness_live}</td>
-        <td>{$song.difference_speechiness}</td>
+        <td>{parseFloat($song.speechiness_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.speechiness_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_speechiness).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Tempo</td>
-        <td>{$song.tempo_studio}</td>
-        <td>{$song.tempo_live}</td>
-        <td>{$song.difference_tempo}</td>
+        <td>{parseFloat($song.tempo_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.tempo_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_tempo).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Acousticness</td>
-        <td>{$song.acousticness_studio}</td>
-        <td>{$song.acousticness_live}</td>
-        <td>{$song.difference_acousticness}</td>
+        <td>{parseFloat($song.acousticness_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.acousticness_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_acousticness).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Instrumentalness</td>
-        <td>{$song.instrumentalness_studio}</td>
-        <td>{$song.instrumentalness_live}</td>
-        <td>{$song.difference_instrumentalness}</td>
+        <td>{parseFloat($song.instrumentalness_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.instrumentalness_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_instrumentalness).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Duration</td>
-        <td>{$song.duration_studio}</td>
-        <td>{$song.duration_live}</td>
-        <td>{$song.difference_duration}</td>
+        <td>{Math.round($song.duration_studio / 1000)}</td>
+        <td>{Math.round($song.duration_live / 1000)}</td>
+        <td>{Math.round($song.difference_duration / 1000)} seconds</td>
+      </tr>
+      <tr>
+        <td class="row-label">Liveness</td>
+        <td>{parseFloat($song.liveness_studio).toFixed(2)}</td>
+        <td>{parseFloat($song.liveness_live).toFixed(2)}</td>
+        <td>{parseFloat($song.difference_liveness).toFixed(2)}</td>
       </tr>
       <tr>
         <td class="row-label">Overall</td>
         <td></td>
         <td></td>
-        <td>{$song.difference_overall}</td>
+        <td>{parseFloat($song.difference_overall).toFixed(2)}</td>
       </tr>
     </tbody>
   </table>
