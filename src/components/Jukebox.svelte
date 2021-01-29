@@ -47,9 +47,7 @@
     <div class="searchbar">
       <Searchbar on:message="{updateSearchString}" />
       <div class="songlist">
-        <Songlist
-          search_query="{search_string}"
-          on:message="{updateChartParameters}" />
+        <Songlist on:message="{updateChartParameters}" />
       </div>
     </div>
   </div>
@@ -66,7 +64,10 @@
               label="STUDIO" />
           </div>
           <div class="namecard">
-            <Namecard />
+            <Namecard
+              track_name_live="{$song.track_name_live}"
+              track_name_studio="{$song.track_name_studio}"
+              artist_name_studio="{$song.artist_name_studio}" />
           </div>
           <div class="player">
             <Player
@@ -112,9 +113,22 @@
     margin: 0 auto;
     background-color: #fefbf7;
     height: fit-content;
+    border: #bfb2a2;
+    border-style: solid;
+    border-width: 2px;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .namecard {
+    margin: 0 10px;
+    padding: 1rem;
+    height: 100%;
+    min-width: 50%;
+    max-width: 50%;
   }
 
   .player {
@@ -172,6 +186,7 @@
   .legend {
     background-color: #d24939;
     color: #fefbf7;
+    padding: 0 0.1rem 0 0.1rem;
   }
 
   .top-level {

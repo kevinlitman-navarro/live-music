@@ -3,6 +3,7 @@
   import { select, selectAll } from "d3-selection";
   import { extent } from "d3-array";
   import { orderby } from "../stores/jukebox.js";
+  import { show_duplicates } from "../stores/jukebox.js";
   import { tooltip_text } from "../stores/jukebox.js";
   import { LayerCake, Svg, Html } from "layercake";
   import Scatter from "./demo/Scatter.svelte";
@@ -13,20 +14,35 @@
 
   const diff_string = "difference_";
   $: active_metric = diff_string.concat($orderby);
-  $: console.log(active_metric);
   const padding = 2;
   export let active_artist_songlist = {};
-  export let r = 12;
+  export let r = 10;
   let mounted = false;
 
   onMount(() => {
     mounted = true;
   });
 
+  function getUniqueListBy(songlist) {
+    let truncatedSonglist = [];
+    let trackNames = [];
+    songlist.forEach((d) => {
+      if (trackNames.indexOf(d.track_name_studio) === -1) {
+        truncatedSonglist.push(d);
+        trackNames.push(d.track_name_studio);
+      }
+    });
+    return truncatedSonglist;
+  }
+
   $: flat_data = active_artist_songlist.artist_songlist;
-  $: console.log(flat_data);
+  $: {
+    if ($show_duplicates) {
+      flat_data = getUniqueListBy(flat_data);
+    }
+  }
+
   $: height = innerHeight / 3;
-  $: console.log(height);
   let width;
   let innerHeight = 1;
   let extent_values = [];
@@ -35,9 +51,7 @@
   $: {
     extent_values = [];
     flat_data.forEach((d) => extent_values.push(Math.abs(d[active_metric])));
-    console.log("old extent", scale_extent);
     scale_extent = extent(extent_values);
-    console.log(scale_extent);
   }
 
   let current_x;
@@ -48,7 +62,6 @@
     current_x = event.detail.current_x;
     current_y = event.detail.current_y;
     show = event.detail.show;
-    console.log(current_x, current_y, show);
   };
 </script>
 
@@ -60,10 +73,14 @@
         data="{flat_data}"
         x="{active_metric}"
         y="0"
-        padding="{padding}">
-        <Svg>
-          <Axis formatTick="{(d) => format('.3')(d)}" />
+        padding="{padding}"
+        r="{r}">
+        <Svg pointerEvents="{false}">
+          <Axis
+            formatTick="{(d) => format('.3')(d)}"
+            metric="{active_metric}" />
         </Svg>
+
         <Svg>
           <Scatter
             r="{r}"

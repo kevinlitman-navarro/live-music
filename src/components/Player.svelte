@@ -7,6 +7,7 @@
   export let preview;
   export let art;
   export let label;
+  const stroke = "#EEEEEE";
 
   //set up a howl for the studio version
   const Howl = howler.Howl;
@@ -34,7 +35,7 @@
     <div class="art">
       <img class="album" alt="album cover art" src="{art}" />
       <div class="studio-click" on:click="{playSound}">
-        <Icon name="play-circle" />
+        <Icon name="play-circle" strokeWidth="1px" stroke="{stroke}" />
       </div>
     </div>
   {/key}

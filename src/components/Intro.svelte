@@ -10,7 +10,6 @@
   <h1>{copy.hed}</h1>
   <h3>{copy.dek}</h3>
   <p>{copy.byline}</p>
-  <p>{copy.byline2}</p>
 </div>
 
 <div class="intro">
@@ -22,7 +21,6 @@
 <div class="dylan">
   <p>{copy.BD1}</p>
   <p>{copy.BD2}</p>
-  <p>{copy.BD3}</p>
   {#if $song}
     <div
       class="playercard"
@@ -34,7 +32,10 @@
           label="STUDIO" />
       </div>
       <div class="namecard">
-        <Namecard />
+        <Namecard
+          track_name_live="Blowin' in the Wind - Live at LA Forum, Inglewood, CA - February 1974"
+          track_name_studio="Blowin' in the Wind"
+          artist_name_studio="Bob Dylan" />
       </div>
       <div class="player">
         <Player
@@ -43,8 +44,75 @@
           label="LIVE" />
       </div>
     </div>
+  {:else}
+    <div class="loader"></div>
   {/if}
-  <p>{copy.BD4}</p>
+  <p>{copy.BD3}</p>
+</div>
+
+<div class="theads">
+  <p>{copy.TH1}</p>
+  <!-- <p>{copy.TH2}</p> -->
+  {#if $song}
+    <div
+      class="playercard"
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      <div class="player">
+        <Player
+          preview="https://p.scdn.co/mp3-preview/cfd849c6c572e6684266dd55cd21fd7e69f2db58?cid=57a57fe2e5b44b2bab703613bb86725e"
+          art="https://i.scdn.co/image/ab67616d0000b27352b09f0ce4f200b1dcae2fa6"
+          label="STUDIO" />
+      </div>
+      <div class="namecard">
+        <Namecard
+          track_name_live="Heaven - Live"
+          track_name_studio="Heaven - 2003 Remaster"
+          artist_name_studio="Talking Heads" />
+      </div>
+      <div class="player">
+        <Player
+          preview="https://p.scdn.co/mp3-preview/9a276e396584e27f75ab7440f4a9bf48aecf6543?cid=57a57fe2e5b44b2bab703613bb86725e"
+          art="https://i.scdn.co/image/ab67616d0000b2734436f2e7c93002ad0eb9716a"
+          label="LIVE" />
+      </div>
+    </div>
+  {:else}
+    <div class="loader"></div>
+  {/if}
+</div>
+
+<div class="aretha">
+  <p>{copy.AF1}</p>
+  {#if $song}
+    <div
+      class="playercard"
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      <div class="player">
+        <Player
+          preview="https://p.scdn.co/mp3-preview/b0d0b4ec8963779239654542a0b33d25caf38156?cid=57a57fe2e5b44b2bab703613bb86725e"
+          art="https://i.scdn.co/image/ab67616d0000b2736aa9314b7ddfbd8f036ba3ac"
+          label="STUDIO" />
+      </div>
+      <div class="namecard">
+        <Namecard
+          track_name_live="Respect"
+          track_name_studio="Respect - Live at Fillmore West, San Francisco, February 5, 1971"
+          artist_name_studio="Aretha Franklin" />
+      </div>
+      <div class="player">
+        <Player
+          preview="https://p.scdn.co/mp3-preview/063c482557787e400891b0da4cc279de251c6ba2?cid=57a57fe2e5b44b2bab703613bb86725e"
+          art="https://i.scdn.co/image/ab67616d0000b27329b8d473ea845365e9a0ea22"
+          label="LIVE" />
+      </div>
+    </div>
+  {:else}
+    <div class="loader"></div>
+  {/if}
+</div>
+
+<div class="preamble">
+  <p>{copy.Jukebox1}</p>
 </div>
 
 <style>
@@ -89,5 +157,26 @@
   .namecard {
     margin: 0 10px;
     padding: 1rem;
+    height: 100%;
+    min-width: 50%;
+    max-width: 50%;
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>

@@ -1,19 +1,17 @@
 <script>
-  export let search_query;
   import { song } from "../stores/jukebox.js";
   import { globalScale } from "../stores/jukebox.js";
   import { onMount } from "svelte";
   import { orderby } from "../stores/jukebox.js";
+  import { show_duplicates } from "../stores/jukebox.js";
   import { active_artist } from "../stores/jukebox.js";
   import { ready } from "../stores/jukebox.js";
   import { createEventDispatcher } from "svelte";
   import { csv } from "d3-fetch";
   import { group, descending, ascending, extent } from "d3-array";
-  import { enterView } from "enter-view";
   import Dial from "./Dial.svelte";
   import { scaleLinear } from "d3-scale";
   import artistDictionary from "../data/artist_dictionary.csv";
-  import { select, selectAll } from "d3-selection";
 
   const dispatch = createEventDispatcher();
   let active;
@@ -48,13 +46,13 @@
   }
 
   onMount(() => {
-    csv("assets/data/final_data_0107/track_name_dictionary.csv")
+    csv("assets/data/final_data_0128/track_name_dictionary.csv")
       .then((tracks) => {
         trackDictionary = tracks;
         console.log(trackDictionary);
       })
       .then(() => {
-        csv("assets/data/final_data_0107/songlist_wide_optimized.csv").then(
+        csv("assets/data/final_data_0128/songlist_wide_optimized.csv").then(
           (raw) => {
             flat_data = raw;
             //       sorted = flat_data.sort((a, b) =>
@@ -173,6 +171,11 @@
         })
         .then(() => {
           updateSong($song);
+          scrollToArtist(
+            grouped.indexOf(
+              grouped.find((v) => v.artist_name_studio == $active_artist)
+            )
+          );
         })
         .catch((error) => {
           console.log(error);
@@ -180,7 +183,27 @@
     }
   }
 
+  let scrollToArtist = (number_of_artists_ahead) => {
+    if (mounted) {
+      console.log(number_of_artists_ahead);
+      let object = document.getElementsByClassName("artist-name")[0];
+      let x = document.querySelector("li.artist-name");
+      let objectHeight = object.offsetHeight;
+      let paddingHeight = window
+        .getComputedStyle(x, null)
+        .getPropertyValue("padding-bottom");
+      console.log(paddingHeight);
+      let combinedHeight = objectHeight + parseFloat(paddingHeight);
+      console.log(combinedHeight);
+      let scrollHeight = combinedHeight * number_of_artists_ahead;
+      console.log(scrollHeight);
+      let target = document.getElementsByClassName("artist-name selected")[0];
+      target.parentNode.scrollTop = combinedHeight * number_of_artists_ahead;
+    }
+  };
+
   $: $active_artist, onArtistChange();
+  // handleNewArtist($active_artist);
 
   function sortData(v) {
     //reorder the data using v as column name
@@ -221,6 +244,44 @@
   let visible_track_keys = [];
   const identifier = "#";
 
+  let handleNewArtist = (d) => {
+    console.log(1, $active_artist);
+    console.log(2, d);
+    if ($active_artist != d) {
+      $active_artist = d;
+      console.log("working", $active_artist);
+      var x = grouped.find((v) => v.artist_name_studio == $active_artist);
+      console.log(x);
+      console.log(
+        grouped.indexOf(
+          grouped.find((v) => v.artist_name_studio == $active_artist)
+        )
+      );
+      scrollToArtist(
+        grouped.indexOf(
+          grouped.find((v) => v.artist_name_studio == $active_artist)
+        )
+      );
+    }
+    console.log(3, $active_artist);
+  };
+
+  function getUniqueList(songlist) {
+    if ($show_duplicates) {
+      let truncatedSonglist = [];
+      let trackNames = [];
+      songlist.forEach((d) => {
+        if (trackNames.indexOf(d.track_name_studio) === -1) {
+          truncatedSonglist.push(d);
+          trackNames.push(d.track_name_studio);
+        }
+      });
+      return truncatedSonglist;
+    } else {
+      return songlist;
+    }
+  }
+
   let current = "Bob Dylan";
   $: sortData($orderby);
 </script>
@@ -229,14 +290,13 @@
 {#if grouped.length}
   <ul>
     {#each grouped as d}
-      <!-- {#if search_query} -->
-      <!-- {#if d.artist_name_studio.toLowerCase() == search_query} -->
       <li
         class="artist-name"
-        on:click="{() => ($active_artist = d.artist_name_studio)}">
+        class:selected="{$active_artist === d.artist_name_studio}"
+        on:click="{handleNewArtist(d.artist_name_studio)}">
         {d.artist_name_studio}
       </li>
-      {#each d.artist_songlist as v}
+      {#each getUniqueList(d.artist_songlist) as v}
         <li
           class:active="{active === v.track_key}"
           class:selected="{$active_artist === d.artist_name_studio}"
@@ -247,25 +307,6 @@
           <Dial value="{v['difference_scaled']}" />
         </li>
       {/each}
-      <!-- {/if} -->
-      <!-- {:else}
-        <li
-          class="artist-name"
-          on:click="{() => ($active_artist = d.artist_name_studio)}">
-          {d.artist_name_studio}
-        </li>
-        {#each d.artist_songlist as v}
-          <li
-            class:active="{active === v.track_key}"
-            class:selected="{$active_artist === d.artist_name_studio}"
-            id="{v.track_key}"
-            class="track-name"
-            on:click="{() => onSelect(v)}">
-            {v.track_name_studio}
-            <Dial value="{v['difference_scaled']}" />
-          </li>
-        {/each}
-      {/if} -->
     {/each}
   </ul>
 {:else}
@@ -277,6 +318,7 @@
     height: 80vh;
     overflow-y: scroll;
     width: 100%;
+    overflow-x: hidden;
   }
 
   li.active {
@@ -298,12 +340,16 @@
     text-transform: uppercase;
     position: sticky;
     cursor: pointer;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .track-name {
     padding-left: 3rem;
     color: var(--off-black);
     font-size: 1em;
+    font-family: var(--narrow);
     border-bottom: 1px solid rgba(178, 160, 114, 0.2);
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;

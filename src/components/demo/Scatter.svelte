@@ -20,13 +20,11 @@
   let highlight = "#000";
   export let r;
   export let figureHeight = 300;
-  $: console.log($song);
   let mounted = false;
 
   const diff_string = "difference_";
   let current_metric = "difference_overall";
   $: current_metric = diff_string.concat($orderby);
-  $: console.log(current_metric);
 
   let datapoints;
   let circlePositions = [];
@@ -49,12 +47,10 @@
       simulation = forceSimulation(simulationData)
         .force("y", forceY(figureHeight / 2).strength(0.2))
         .force("x", forceX((d) => $xScale($x(d))).strength(1))
-        .force("collide", forceCollide(13).iterations(1))
+        .force("collide", forceCollide(r + 1).iterations(1))
         .on("tick", (d) => {
           circlePositions = [...simulationData];
         });
-
-      console.log($xScale.domain());
     }
   };
 
@@ -68,7 +64,6 @@
   });
 
   $: $data, $x, createSimulation();
-  $: console.log($xScale.domain());
 
   let active_track_key;
   const folder_name = "assets/data/final_data_0107/single_rows/";
@@ -82,7 +77,6 @@
     csv(filename).then((selected) => {
       $song = selected[0];
       $song["difference_scaled"] = $globalScale($song[current_metric]);
-      console.log($song.artist_name_studio);
     });
   }
 
@@ -106,7 +100,6 @@
   function handleMouseover(d) {
     show = true;
     $tooltip_text = d.track_name_studio;
-    console.log(d.x);
     current_x = d.x;
     current_y = d.y;
 

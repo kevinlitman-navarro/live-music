@@ -17,12 +17,14 @@
   .tooltip {
     visibility: hidden;
     width: 120px;
-    background-color: black;
+    background-color: #bfb2a2;
     color: #fff;
     text-align: center;
-    padding: 5px 0;
+    padding: 5px 5px;
     border-radius: 6px;
     pointer-events: none;
+    font-family: var(--sans);
+    font-weight: 200;
 
     /* Position the tooltip text - see examples below! */
     position: absolute;

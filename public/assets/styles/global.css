@@ -1,6 +1,7 @@
 :root {
   --sans: "National 2 Web", Helvetica, Arial, sans-serif;
   --serif: "Tiempos Text Web", Georgia, Times, serif;
+  --narrow: "National 2 Narrow Web", Helvetica, Arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, "Courier New", monospace;
 
   --z-bottom: -100;
@@ -13,12 +14,12 @@
   --gray-dark: #5b5b5b;
   --gray: #949494;
   --gray-light: #c9c9c9;
-  --off-white: #f0f0f0;
+  --off-white: #fefbf7;
   --white: #fff;
   --purple: #a239ca;
   --blue: #4717f6;
   --green: #34a29e;
-  --red: #ff533d;
+  --red: #d24939;
   --yellow: #e5e338;
 
   --bg: var(--white);
@@ -40,8 +41,8 @@
   --border: var(--gray-light);
   --animation-duration: 0.1s;
   --button-hover: var(--gray-light);
-  --scrollbar-thumb: color-mod(var(--gray-light));
-  --scrollbar-thumb-hover: color-mod(var(--gray-dark));
+  --scrollbar-thumb: var(--gray-light);
+  --scrollbar-thumb-hover: var(--gray-dark);
   --form-placeholder: var(--gray-dark);
   --form-font: var(--sans);
   --form-text: var(--gray-dark);
