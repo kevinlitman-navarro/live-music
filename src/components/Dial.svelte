@@ -10,14 +10,17 @@
 </div>
 
 <style>
+  .labels {
+    width: 3rem;
+  }
   .knob {
     display: block;
     position: relative;
     top: 15.5%;
     left: 14.5%;
     background: #fff;
-    width: 4em;
-    height: 4em;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 50%;
     border-style: solid;
     border-width: thin;

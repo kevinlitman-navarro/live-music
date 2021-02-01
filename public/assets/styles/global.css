@@ -28,6 +28,8 @@
   --primary: var(--red);
   --secondary: var(--green);
 
+  --tan-light: #B2A072;
+
   /* water.css */
 
   --body-font: var(--serif);
@@ -37,7 +39,7 @@
   --selection: var(--gray);
   --text-main: var(--off-black);
   --links: var(--purple);
-  --focus: var(--green);
+  --focus: rgb(187, 134, 252);
   --border: var(--gray-light);
   --animation-duration: 0.1s;
   --button-hover: var(--gray-light);
@@ -74,4 +76,19 @@
 #demo svg {
   width: 1em;
   vertical-align: middle;
+}
+
+.autocomplete {
+  width: 100%;
+  font-family: var(--narrow);
+}
+
+.autocomplete input {
+  width: 100%;
+  background: #3C3332;
+  color: blue;
+}
+
+.point-wrapper {
+  cursor: pointer;
 }

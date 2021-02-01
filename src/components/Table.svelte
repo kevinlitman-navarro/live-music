@@ -152,4 +152,26 @@
 </div>
 
 <style>
+  th {
+    color: var(--red);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(178, 160, 114, 0.2);
+  }
+
+  td {
+    text-align: right;
+    padding: 0.5rem 0; 
+  }
+
+  .row-label {
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 30%;
+  }
+
 </style>

@@ -14,7 +14,7 @@
 
   const diff_string = "difference_";
   $: active_metric = diff_string.concat($orderby);
-  const padding = 2;
+  const padding = 10;
   export let active_artist_songlist = {};
   export let r = 10;
   let mounted = false;
@@ -104,6 +104,7 @@
   figure {
     position: relative;
     width: 100%;
+    padding: 2rem;
   }
 
   .chart-wrapper {

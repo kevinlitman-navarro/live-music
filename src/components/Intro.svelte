@@ -122,32 +122,37 @@
   }
 
   p {
-    max-width: 40%;
+    max-width: 40rem;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5em
   }
 
   .top {
     text-align: center;
     margin: 0 auto;
+    padding: 0 0 3rem 0;
+  }
+
+  .top p {
+    font-family: var(--narrow);
   }
 
   .playercard {
     display: flex;
     visibility: hidden;
-    max-width: 60em;
-    margin: 0 auto;
+    max-width: 50rem;
+    margin: 4rem auto;
     background-color: #fefbf7;
-    height: fit-content;
     border: #bfb2a2;
     border-style: solid;
     border-width: 2px;
     justify-content: center;
     align-items: center;
-    padding: 2rem 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
+    box-shadow: 0px 2px 10px rgba(191, 178, 162, 0.25);
   }
 
   .player {

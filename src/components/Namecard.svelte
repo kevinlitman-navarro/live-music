@@ -36,7 +36,7 @@
     text-align: center;
     border: var(--red);
     border-style: solid;
-    border-width: 0.6em;
+    border-width: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,7 +45,7 @@
   .artist-name {
     border: var(--red);
     border-style: solid;
-    border-width: 0.3em;
+    border-width: 3px;
     width: 70%;
     height: 100%;
     margin: 0 auto;
@@ -53,6 +53,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-family: var(--narrow);
+    text-transform: uppercase;
   }
 
   .artist-box {
@@ -64,7 +66,7 @@
   }
   .line {
     background-color: var(--red);
-    width: 15%;
+    width: 17%;
     height: 10%;
     position: absolute;
   }
@@ -76,17 +78,17 @@
   .left-triangle {
     width: 0;
     height: 0;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-left: 0.6em solid var(--red);
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid var(--red);
   }
 
   .right-triangle {
     width: 0;
     height: 0;
-    border-top: 0.6em solid transparent;
-    border-bottom: 0.6em solid transparent;
-    border-right: 0.6em solid var(--red);
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-right: 1em solid var(--red);
   }
 
   .side {
@@ -97,6 +99,10 @@
   }
 
   .song {
-    font-weight: bold;
+    font-weight: 700;
+    font-family: var(--narrow);
+    text-transform: uppercase;
+    padding: 0.25rem 0;
+    line-height: 1;
   }
 </style>

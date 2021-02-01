@@ -21,17 +21,8 @@
 
 <AutoComplete
   items="{artistDictionary.map((d) => d.artist_name_studio)}"
-  bind:selectedItem="{value}" />
+  bind:selectedItem="{value}"
+  placeholder="Search for an artist" />
 
 <style>
-  input {
-    background-color: #3c3332;
-    border-radius: 5px;
-  }
-
-  ::placeholder {
-    color: #fefbf7;
-    text-transform: capitalize;
-    text-align: center;
-  }
 </style>

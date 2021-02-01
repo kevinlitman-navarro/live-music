@@ -50,6 +50,7 @@
         <Songlist on:message="{updateChartParameters}" />
       </div>
     </div>
+    <div class="fade"></div>
   </div>
   <div class="column2">
     <div class="top-level">
@@ -96,6 +97,7 @@
       </div>
 
       <div class="column4">
+        <h4>Album Characteristics</h4>
         {#if $song}
           <div class="table">
             <Table />
@@ -109,24 +111,15 @@
 <style>
   .playercard {
     display: flex;
-    max-width: 60em;
-    margin: 0 auto;
     background-color: #fefbf7;
-    height: fit-content;
-    border: #bfb2a2;
-    border-style: solid;
-    border-width: 2px;
     justify-content: center;
     align-items: center;
-    padding: 2rem 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
   }
 
   .namecard {
     margin: 0 10px;
     padding: 1rem;
-    height: 100%;
     min-width: 50%;
     max-width: 50%;
   }
@@ -138,7 +131,7 @@
   .order {
     background-color: #fefbf7;
     padding: 1rem;
-    max-height: 20vw;
+    margin: 0 0 1rem 0;
   }
 
   .jukebox {
@@ -147,6 +140,7 @@
     flex-direction: row;
     max-width: 82rem;
     margin: 0 auto;
+    padding: 2rem 2rem 0 2rem;
   }
 
   .column1 {
@@ -154,19 +148,51 @@
     flex-direction: column;
     min-width: 24rem;
     align-items: center;
-    margin-right: 0.5em;
+    margin: 0 1rem 0 0;
+    position: relative
+  }
+
+  .fade {
+    width: calc(100% - 2rem);
+    height: 12rem;
+    background: linear-gradient(0deg, rgba(254,251,247,1) 20%, rgba(254,251,247,0) 100%);
+    position: absolute;
+    bottom: 0;
   }
 
   .column2 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 90vh;
-    margin-left: 0.5em;
+    align-content: space-between;
+    margin: 0 0 0 1rem;
   }
 
   .column3 {
-    max-height: 30vh;
+    margin: 0 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+  }
+
+  .column4 {
+    background-color: #fefbf7;
+    margin: 0 0 0 1rem;
+    padding: 1rem;
+    width: calc(100% - 16rem);
+  }
+
+  .column4 h4 {
+    background: #3C3332;
+    font-family: var(--narrow);
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 0.25rem;
+    margin: 0 0 1rem 0;
+    padding: 0.25rem 0;
+    color: #FEFBF7;
+    font-size: 1.25rem;
+    font-weight: 500;
+    height: 2.25rem;
   }
 
   .column2 > div {
@@ -179,46 +205,43 @@
   .songlist {
     background-color: #fefbf7;
     max-width: 20vw;
-    margin: 1rem;
   }
 
   .searchbar {
     background-color: #fefbf7;
     max-width: 100%;
-    padding: 1.2rem;
-    margin: 1rem;
+    padding: 1rem;
+    height: 100%;
   }
 
   .table {
     max-width: 50vw;
     background-color: #fefbf7;
-    margin: 1rem;
-    max-height: 30vh;
-    padding-top: 2px;
+    margin-bottom: 1rem;
+    font-family: var(--narrow);
   }
 
   .legend {
     background-color: #d24939;
     color: #fefbf7;
-    padding: 0 0.1rem 0 0.1rem;
-    max-height: 10vh;
+    padding: 0 1rem 0 1rem;
+    margin: 1rem 0 0 0;
   }
 
   .top-level {
     display: flex;
-    margin: 1em;
-    margin-top: 0em;
+    margin: 0 0 1rem 0;
   }
 
   .middle-level {
     display: flex;
-    margin: 1em;
+    margin: 1rem 0;
   }
 
   .bottom-level {
     display: flex;
     flex-direction: row;
-    margin: 1em;
+    margin: 1rem 0 0 0;
   }
 
   .column3 {
