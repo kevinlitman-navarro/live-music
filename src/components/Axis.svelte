@@ -68,34 +68,34 @@
 {#if metric == 'difference_overall'}
   <g
     class="annotation left"
-    transform="translate({$width * 0.15},{$height * 0.2})">
+    transform="translate({$width * 0},{$height * 0.05})">
     <g class="arrow">
       <Icon name="arrow-left" stroke="{stroke}" strokeWidth="2px" />
-      <text text-anchor="middle">Less different</text>
+      <text text-anchor="start">Less different</text>
     </g>
   </g>
 
   <g
     class="annotation right"
-    transform="translate({$width * 0.85},{$height * 0.2})">
+    transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
-      <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
-      <text text-anchor="middle">More different</text>
+      <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+      <text text-anchor="end">More different</text>
     </g>
   </g>
 {:else}
   <g
     class="annotation left"
-    transform="translate({$xScale($xScale.domain()[0] * 0.75)},{$height * 0.2})">
+    transform="translate({$width * 0},{$height * 0.05})">
     <g class="arrow">
       <Icon name="arrow-left" stroke="{stroke}" strokeWidth="2px" />
-      <text text-anchor="middle">Less {$orderby}</text>
+      <text text-anchor="start">Less {$orderby}</text>
     </g>
   </g>
 
   <g
     class="annotation zero"
-    transform="translate({$xScale(0)},{$height * 0.2})">
+    transform="translate({$xScale(0)},{$height * 0.05})">
     <g class="arrow">
       <text text-anchor="middle">No difference</text>
     </g>
@@ -103,10 +103,10 @@
 
   <g
     class="annotation right"
-    transform="translate({$xScale($xScale.domain()[1] * 0.75)},{$height * 0.2})">
+    transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
       <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
-      <text text-anchor="middle">More {$orderby}</text>
+      <text text-anchor="end">More {$orderby}</text>
     </g>
   </g>
 {/if}

@@ -32,15 +32,14 @@
 
 <div class="group">
   {#key art}
-    <div class="art">
-      <img class="album" alt="album cover art" src="{art}" />
-      <div class="studio-click" on:click="{playSound}">
+    <div class="art" on:click="{playSound}">
+      <img class="album" alt="album cover art" src="{art}"/>
+      <div class="studio-click">
         <Icon name="play-circle" strokeWidth="1px" stroke="{stroke}" />
       </div>
     </div>
+    <p class="label">{label}</p>
   {/key}
-
-  <span class="label">{label}</span>
 </div>
 
 <style>
@@ -62,6 +61,22 @@
     animation-duration: 800ms;
     animation-iteration-count: 1;
     animation-timing-function: linear;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 10px;
+  }
+
+  .art:hover {
+    transform: scale(1.125) rotate(2deg);
+    box-shadow: 0px 2px 10px rgba(191, 178, 162, 0.5);
+  }
+
+  .art:hover .studio-click {
+    opacity: 0.5;
+  }
+
+  .art:hover + .label {
+    font-weight: 700;
   }
 
   @keyframes spin {
@@ -80,10 +95,14 @@
   }
 
   .label {
-    position: absolute;
-    font-family: var(--sans);
+    font-family: var(--narrow);
     text-transform: capitalize;
     text-align: center;
+    color: #3B3332;
+    width: 100%;
+    padding: 0;
+    font-size: 0.9rem;
+    margin: 0.75rem 0 0 0;
   }
 
   .group {

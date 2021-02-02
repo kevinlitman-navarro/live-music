@@ -14,21 +14,29 @@
 <fieldset>
   <!-- <legend>{legend}</legend> -->
   {#each buttons as { name, label }}
-    <input
+  <div class="input-wrapper">
+      <input
       class="sr-only"
       type="radio"
       id="{slugify(name)}"
       bind:group="{$orderby}"
       value="{slugify(name)}" />
-    <label for="{slugify(name)}"> {label} </label>
+      <label for="{slugify(name)}"> {label} </label>
+  </div>
   {/each}
 </fieldset>
 
 <style>
+  .input-wrapper {
+    border-bottom: 1px solid rgba(178, 160, 114, 0.2);
+    padding: 0.5rem 0 0.5rem 0.25rem; 
+  }
+
   fieldset {
-    max-width: 25%;
     border-radius: 2px;
-    border: 1px solid var(--gray-darker);
+    border: none;
+    width: 100%;
+    padding: 0;
   }
 
   /* legend {
@@ -38,6 +46,7 @@
   } */
   label {
     user-select: none;
+    cursor: pointer;
   }
 
   .sr-only {
@@ -55,10 +64,10 @@
   }
 
   input[type="radio"] + label {
-    display: block;
+    display: flex;
     position: relative;
-    padding: 0 1em;
     text-align: left;
+    font-weight: 500;
   }
 
   input[type="radio"] + label::before {
@@ -66,12 +75,16 @@
     position: relative;
     display: inline-block;
     margin-right: 0.5em;
-    width: 1em;
-    height: 1em;
+    width: 1.25em;
+    height: 1.25em;
     background: transparent;
     border: 1px solid var(--gray);
     border-radius: 50%;
     transition: background 0.3s ease-out;
+  }
+
+  input[type="radio"]:checked + label {
+    font-weight: 700;
   }
 
   input[type="radio"]:checked + label::before {
@@ -84,10 +97,10 @@
     content: "";
     position: absolute;
     display: inline-block;
-    width: 0.5em;
-    height: 0.5em;
+    width: 0.75em;
+    height: 0.75em;
     top: 0.25em;
-    left: 1.25em;
+    left: 0.25em;
     background: var(--red);
     border: 1px solid var(--red);
     border-radius: 50%;
@@ -115,7 +128,16 @@
   }
 
   label {
-    font-weight: bold;
-    font-family: var(--sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--narrow);
+  }
+
+  .input-wrapper:hover {
+    background-color: rgba(178, 160, 114, 0.2);
+  }
+
+  .input-wrapper:hover label {
+    font-weight: 700;
   }
 </style>

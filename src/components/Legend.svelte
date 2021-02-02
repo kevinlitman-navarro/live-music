@@ -6,5 +6,6 @@
   h2 {
     text-align: center;
     font-family: var(--narrow);
+    font-size: 1.25rem;
   }
 </style>

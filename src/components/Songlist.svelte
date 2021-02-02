@@ -297,17 +297,19 @@
         on:click="{handleNewArtist(d.artist_name_studio)}">
         {d.artist_name_studio}
       </li>
-      {#each getUniqueList(d.artist_songlist) as v}
-        <li
-          class:active="{active === v.track_key}"
-          class:selected="{$active_artist === d.artist_name_studio}"
-          id="{v.track_key}"
-          class="track-name"
-          on:click="{() => onSelect(v)}">
-          {v.track_name_studio}
-          <Dial value="{v['difference_scaled']}" />
-        </li>
-      {/each}
+      <div class="track-list">
+        {#each getUniqueList(d.artist_songlist) as v}
+          <li
+            class:active="{active === v.track_key}"
+            class:selected="{$active_artist === d.artist_name_studio}"
+            id="{v.track_key}"
+            class="track-name"
+            on:click="{() => onSelect(v)}">
+            <span>{v.track_name_studio}</span>
+            <Dial value="{v['difference_scaled']}" />
+          </li>
+        {/each}
+      </div>
     {/each}
   </ul>
 {:else}
@@ -315,8 +317,11 @@
 {/if}
 
 <style>
+  p {
+    font-family: var(--sans);
+  }
   ul {
-    height: 80vh;
+    height: 92vh;
     overflow-y: scroll;
     width: 100%;
     overflow-x: hidden;
@@ -327,17 +332,27 @@
     color: var(--off-white);
   }
 
+  li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li span {
+    width: calc(100% - 3rem);
+  }
+
   li.selected {
-    display: block;
+    display: flex;
   }
 
   .artist-name {
-    color: red;
+    color: #3c3332; 
     font-weight: bold;
-    font-family: var(--sans);
-    padding-left: 1rem;
-    padding-bottom: 0.4rem;
-    font-size: 1.4em;
+    font-family: var(--narrow);
+    padding: 0.25rem 0 0.25rem 0.25rem;
+    font-size: 1.25em;
     text-transform: uppercase;
     position: sticky;
     cursor: pointer;
@@ -346,8 +361,13 @@
     white-space: nowrap;
   }
 
+  .artist-name:hover, .artist-name.selected {
+    color:var(--red);
+    background-color: rgba(178, 160, 114, 0.2);
+  }
+
   .track-name {
-    padding-left: 3rem;
+    padding: 0 0.5rem 0 1rem;
     color: var(--off-black);
     font-size: 1em;
     font-family: var(--narrow);
@@ -355,6 +375,12 @@
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
     display: none;
+    cursor: pointer;
+  }
+
+  .track-name:hover {
+    background: rgba(178, 160, 114, 0.2);
+    font-weight: 700;
   }
 
   .track-list-wrapper {
@@ -377,5 +403,9 @@
     font-size: 2rem;
     padding: 0.5rem;
     margin-top: 1rem;
+  }
+
+  .track-list li:last-of-type {
+    margin: 0 0 3rem 0;
   }
 </style>
