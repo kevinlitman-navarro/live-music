@@ -97,7 +97,7 @@
       </div>
 
       <div class="column4">
-        <h4>Album Characteristics</h4>
+        <h4>Song Characteristics</h4>
         {#if $song}
           <div class="table">
             <Table song="{$song}" highlight_row="{$orderby}" />
@@ -149,13 +149,17 @@
     min-width: 24rem;
     align-items: center;
     margin: 0 1rem 0 0;
-    position: relative
+    position: relative;
   }
 
   .fade {
     width: calc(100% - 2rem);
     height: 12rem;
-    background: linear-gradient(0deg, rgba(254,251,247,1) 20%, rgba(254,251,247,0) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(254, 251, 247, 1) 20%,
+      rgba(254, 251, 247, 0) 100%
+    );
     position: absolute;
     bottom: 0;
   }
@@ -182,14 +186,14 @@
   }
 
   .column4 h4 {
-    background: #3C3332;
+    background: #3c3332;
     font-family: var(--narrow);
     text-transform: uppercase;
     text-align: center;
     border-radius: 0.25rem;
     margin: 0 0 1rem 0;
     padding: 0.25rem 0;
-    color: #FEFBF7;
+    color: #fefbf7;
     font-size: 1.25rem;
     font-weight: 500;
     height: 2.25rem;

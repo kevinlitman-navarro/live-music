@@ -187,19 +187,10 @@
   let scrollToArtist = (number_of_artists_ahead) => {
     if (mounted) {
       console.log(number_of_artists_ahead);
-      let object = document.getElementsByClassName("artist-name")[0];
       let x = document.querySelector("li.artist-name");
-      let objectHeight = object.offsetHeight;
-      let paddingHeight = window
-        .getComputedStyle(x, null)
-        .getPropertyValue("padding-bottom");
-      console.log(paddingHeight);
-      let combinedHeight = objectHeight + parseFloat(paddingHeight);
-      console.log(combinedHeight);
-      let scrollHeight = combinedHeight * number_of_artists_ahead;
-      console.log(scrollHeight);
+      let objectHeight = x.offsetHeight;
       let target = document.getElementsByClassName("artist-name selected")[0];
-      target.parentNode.scrollTop = combinedHeight * number_of_artists_ahead;
+      target.parentNode.scrollTop = objectHeight * number_of_artists_ahead;
     }
   };
 
@@ -348,7 +339,7 @@
   }
 
   .artist-name {
-    color: #3c3332; 
+    color: #3c3332;
     font-weight: bold;
     font-family: var(--narrow);
     padding: 0.25rem 0 0.25rem 0.25rem;
@@ -361,8 +352,9 @@
     white-space: nowrap;
   }
 
-  .artist-name:hover, .artist-name.selected {
-    color:var(--red);
+  .artist-name:hover,
+  .artist-name.selected {
+    color: var(--red);
     background-color: rgba(178, 160, 114, 0.2);
   }
 

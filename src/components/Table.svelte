@@ -110,7 +110,7 @@
 
   td {
     text-align: right;
-    padding: 0.5rem 0; 
+    padding: 0.5rem 0;
   }
 
   .row-label {
@@ -121,5 +121,14 @@
   }
   .row.active {
     background-color: var(--red);
+    color: var(--off-white);
+  }
+
+  .row.active > td:first-of-type {
+    padding-left: 0.3rem;
+  }
+
+  .row.active > td:last-of-type {
+    padding-right: 0.3rem;
   }
 </style>

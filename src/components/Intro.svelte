@@ -37,12 +37,14 @@
 
 <div class="dylan">
   <p>{copy.BD1}</p>
-  <h3>Audio Features for Blowin' In the Wind</h3>
-  {#if dylanData}
-    <Table song="{dylanData}" highlight_row="energy" />
-  {:else}
-    <p>Loading data...</p>
-  {/if}
+  <div class="table">
+    <h4>Blowin' In the Wind — Song Characteristics</h4>
+    {#if dylanData}
+      <Table song="{dylanData}" highlight_row="energy" />
+    {:else}
+      <p>Loading data...</p>
+    {/if}
+  </div>
   <p>{copy.BD2}</p>
   {#if $song}
     <div
@@ -144,13 +146,20 @@
     margin: auto;
   }
 
+  .table {
+    max-width: 50rem;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   p {
     max-width: 40rem;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    line-height: 1.5em
+    line-height: 1.5em;
   }
 
   .top {
@@ -197,6 +206,22 @@
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+  }
+
+  h4 {
+    background: #3c3332;
+    font-family: var(--narrow);
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 0.25rem;
+
+    padding: 0.25rem 0;
+    color: #fefbf7;
+    font-size: 1.25rem;
+    font-weight: 500;
+    height: 2.25rem;
+    max-width: 50rem;
+    margin: 0 auto;
   }
 
   @keyframes spin {
