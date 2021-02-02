@@ -1,9 +1,26 @@
 <script>
   import copy from "../data/copy.json";
+  import { csv } from "d3-fetch";
   import Player from "./Player.svelte";
   import { song } from "../stores/jukebox.js";
+  import Table from "./Table.svelte";
   import { ready } from "../stores/jukebox.js";
   import Namecard from "./Namecard.svelte";
+  import { onMount } from "svelte";
+  import { get_slot_changes } from "svelte/internal";
+
+  let dylanData;
+
+  onMount(() => {
+    csv(
+      "assets/data/final_data_0128/single_rows/18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY.csv"
+    ).then((selected) => {
+      dylanData = selected[0];
+      // dylanData = dylanData.map((d) => ({
+      //   ...+d,
+      // }));
+    });
+  });
 </script>
 
 <div class="top">
@@ -20,6 +37,12 @@
 
 <div class="dylan">
   <p>{copy.BD1}</p>
+  <h3>Audio Features for Blowin' In the Wind</h3>
+  {#if dylanData}
+    <Table song="{dylanData}" highlight_row="energy" />
+  {:else}
+    <p>Loading data...</p>
+  {/if}
   <p>{copy.BD2}</p>
   {#if $song}
     <div

@@ -45,7 +45,7 @@
 		"dev": "npm run dev:rollup",
 		"predeploy": "npm run build",
 		"deploy": "rollup -c rollup.config-ssr.js",
-		"start": "sirv public --host"
+		"start": "sirv public"
 	},
 	"dependencies": {
 		"d3-force": "^2.1.1",

@@ -1,6 +1,6 @@
 <script>
   import { song } from "../stores/jukebox.js";
-  import { ready } from "../stores/jukebox.js";
+  import { orderby } from "../stores/jukebox.js";
   import { active_artist } from "../stores/jukebox.js";
   import Player from "./Player.svelte";
   import Table from "./Table.svelte";
@@ -100,7 +100,7 @@
         <h4>Album Characteristics</h4>
         {#if $song}
           <div class="table">
-            <Table />
+            <Table song="{$song}" highlight_row="{$orderby}" />
           </div>
         {/if}
       </div>
