@@ -17,15 +17,15 @@
   .tooltip {
     visibility: hidden;
     width: 120px;
-    background-color: #FEFBF7;
-    color: #3C3332;
+    background-color: var(--jukebox-light-tan);
+    color: var(--jukebox-brown);
     text-align: center;
     padding: 5px 5px;
     border-radius: 6px;
     pointer-events: none;
     font-family: var(--sans);
     font-weight: 200;
-    border: 1px solid #3C3332;
+    border: 1px solid var(--jukebox-brown);
     box-shadow: 0px 2px 10px rgba(191, 178, 162, 0.25);
 
     /* Position the tooltip text - see examples below! */

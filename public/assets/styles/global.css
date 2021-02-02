@@ -28,7 +28,10 @@
   --primary: var(--red);
   --secondary: var(--green);
 
-  --tan-light: #B2A072;
+  --jukebox-light-tan: #FEFBF7;
+  --jukebox-dark-tan: #BFB2A2;
+  --jukebox-brown: #3C3332;
+  --jukebox-red: #D24939;
 
   /* water.css */
 
@@ -85,10 +88,15 @@
 
 .autocomplete input {
   width: 100%;
-  background: #3C3332;
-  color: blue;
+  background: var(--jukebox-light-tan);
+  border: 1px solid var(--jukebox-dark-tan);
+  color: var(--jukebox-dark-tan);
 }
 
 .point-wrapper {
   cursor: pointer;
+}
+
+.namecard-inset {
+  background-color: #fff;
 }

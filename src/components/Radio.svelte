@@ -78,7 +78,7 @@
     width: 1.25em;
     height: 1.25em;
     background: transparent;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--jukebox-dark-tan);
     border-radius: 50%;
     transition: background 0.3s ease-out;
   }
@@ -88,7 +88,7 @@
   }
 
   input[type="radio"]:checked + label::before {
-    border: 1px solid var(--gray, #ddd);
+    border: 1px solid var(--jukebox-red);
     border-radius: 50%;
     transition: background 0.3s ease-in;
   }
@@ -139,5 +139,11 @@
 
   .input-wrapper:hover label {
     font-weight: 700;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    label {
+      font-size: 0.9rem;
+    }
   }
 </style>

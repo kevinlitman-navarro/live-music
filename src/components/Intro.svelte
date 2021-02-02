@@ -24,7 +24,11 @@
 </script>
 
 <div class="top">
-  <h1>{copy.hed}</h1>
+  <h1>
+    <span class="intro-hed">Introducing the</span><br>
+    <span class="live-hed">Live Music</span><br>
+    <span class="juke-hed">Jukebox</span>
+  </h1>
   <h3>{copy.dek}</h3>
   <p>{copy.byline}</p>
 </div>
@@ -141,6 +145,36 @@
 </div>
 
 <style>
+  h1 {
+    margin: 0;
+    font-family: var(--narrow);
+    color: var(--jukebox-brown);
+  }
+
+  .intro-hed {
+    letter-spacing: 0.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .live-hed {
+    text-transform: uppercase;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .juke-hed {
+    color: var(--jukebox-red);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 9rem;
+    margin: 0;
+    line-height: 1.5;
+    border-top: 3px solid var(--jukebox-brown);
+    border-bottom: 3px solid var(--jukebox-brown);
+    font-style: italic;
+  }
   .example {
     display: flex;
     margin: auto;
@@ -148,16 +182,18 @@
 
   .table {
     max-width: 50rem;
-    margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin: 4rem auto;
+    background-color: var(--jukebox-light-tan);
+    border: var(--jukebox-dark-tan);
+    border-style: solid;
+    border-width: 2px;
+    padding: 2rem;
+    box-shadow: 0px 2px 10px rgba(191, 178, 162, 0.25);
   }
 
   p {
     max-width: 40rem;
-    margin: 0 auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem auto;
     font-size: 1.2rem;
     line-height: 1.5em;
   }
@@ -177,8 +213,8 @@
     visibility: hidden;
     max-width: 50rem;
     margin: 4rem auto;
-    background-color: #fefbf7;
-    border: #bfb2a2;
+    background-color: var(--jukebox-light-tan);
+    border: var(--jukebox-dark-tan);
     border-style: solid;
     border-width: 2px;
     justify-content: center;
@@ -187,41 +223,38 @@
     box-shadow: 0px 2px 10px rgba(191, 178, 162, 0.25);
   }
 
-  .player {
-    background-color: #fefbf7;
-  }
-
   .namecard {
     margin: 0 10px;
     padding: 1rem;
     height: 100%;
-    min-width: 50%;
+    min-width: 60%;
     max-width: 50%;
   }
 
   .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border: 16px solid #BFB2A2; /* Light grey */
+    border-top: 16px solid #D24939; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+    margin: 0 auto;
   }
 
   h4 {
-    background: #3c3332;
+    background: var(--jukebox-brown);
     font-family: var(--narrow);
     text-transform: uppercase;
     text-align: center;
     border-radius: 0.25rem;
+    margin: 0 0 1rem 0;
 
     padding: 0.25rem 0;
-    color: #fefbf7;
+    color: var(--jukebox-light-tan);
     font-size: 1.25rem;
     font-weight: 500;
     height: 2.25rem;
     max-width: 50rem;
-    margin: 0 auto;
   }
 
   @keyframes spin {
@@ -230,6 +263,53 @@
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .table {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .intro-hed {
+      font-size: 1rem;
+    }
+
+    .live-hed {
+      font-size: 3.5rem;
+    }
+
+    .juke-hed {
+      font-size: 5.5rem;
+    }
+
+    .playercard {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 1rem;
+      margin: 2rem auto;
+    }
+
+    .player {
+      order: 1;
+      width: calc(50% - 2rem);
+      max-width: 150px; 
+    }
+
+    .namecard {
+      order: 2;
+      width: 100%;
+      max-width: 100%;
+      margin: 2rem 0 0 0;
+      padding: 0;
+    }
+
+    .table {
+      padding: 1rem;
+      margin: 2rem auto;
+      font-size: 0.8rem;
     }
   }
 </style>

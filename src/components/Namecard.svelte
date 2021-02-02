@@ -4,7 +4,7 @@
   export let artist_name_studio;
 </script>
 
-<div class="namecard">
+<div class="namecard namecard-inset">
   <div class="studio-name song">{track_name_studio}</div>
   <div class="artist-box">
     <div class="left side">
