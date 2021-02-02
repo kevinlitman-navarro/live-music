@@ -23,7 +23,7 @@
     mounted = true;
   });
 
-  function getUniqueListBy(songlist) {
+  function getUniqueList(songlist) {
     let truncatedSonglist = [];
     let trackNames = [];
     songlist.forEach((d) => {
@@ -38,7 +38,7 @@
   $: flat_data = active_artist_songlist.artist_songlist;
   $: {
     if ($show_duplicates) {
-      flat_data = getUniqueListBy(flat_data);
+      flat_data = getUniqueList(flat_data);
     }
   }
 

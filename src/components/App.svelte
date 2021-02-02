@@ -42,6 +42,7 @@
   .jukebox {
     background-color: #bfb2a2;
     visibility: hidden;
+    height: 100vh;
   }
 
   .intro {

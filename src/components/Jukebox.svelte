@@ -1,6 +1,6 @@
 <script>
   import { song } from "../stores/jukebox.js";
-  import { ready } from "../stores/jukebox.js";
+  import { orderby } from "../stores/jukebox.js";
   import { active_artist } from "../stores/jukebox.js";
   import Player from "./Player.svelte";
   import Table from "./Table.svelte";
@@ -98,7 +98,7 @@
       <div class="column4">
         {#if $song}
           <div class="table">
-            <Table />
+            <Table song="{$song}" highlight_row="{$orderby}" />
           </div>
         {/if}
       </div>
@@ -155,14 +155,16 @@
     min-width: 24rem;
     align-items: center;
     margin-right: 0.5em;
+    height: 90%;
+    overflow: hidden;
   }
 
   .column2 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 90vh;
     margin-left: 0.5em;
+    height: 90%;
+    overflow: hidden;
   }
 
   .column3 {
