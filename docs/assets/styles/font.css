@@ -131,3 +131,19 @@
 	font-display: swap;
 }
 */
+
+/*
+********************
+	Tiempos Text
+********************
+*/
+
+@font-face {
+	font-family: 'Monoton Regular';
+	src: url('pudding-fonts/monoton/Monoton-Regular.woff2') format('woff2'),
+	url('pudding-fonts/monoton/Monoton-Regular.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+}
