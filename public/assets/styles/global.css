@@ -3,6 +3,7 @@
   --serif: "Tiempos Text Web", Georgia, Times, serif;
   --narrow: "National 2 Narrow Web", Helvetica, Arial, sans-serif;
   --mono: Menlo, Consolas, Monaco, "Courier New", monospace;
+  --display: "Monoton Regular", display;
 
   --z-bottom: -100;
   --z-middle: 0;
@@ -99,4 +100,12 @@
 
 .namecard-inset {
   background-color: #fff;
+}
+
+.header-shape svg {
+  width: 100%;
+}
+
+.juke-label .header-shape svg path {
+  stroke-width: 12px;
 }

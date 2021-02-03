@@ -8,6 +8,7 @@
   import Namecard from "./Namecard.svelte";
   import { onMount } from "svelte";
   import { get_slot_changes } from "svelte/internal";
+  import headerShape from "../svg/pudding/header-shape.svg";
 
   let dylanData;
 
@@ -24,11 +25,18 @@
 </script>
 
 <div class="top">
-  <h1>
+  <h2>
     <span class="intro-hed">Introducing the</span><br>
-    <span class="live-hed">Live Music</span><br>
-    <span class="juke-hed">Jukebox</span>
-  </h1>
+  </h2>
+  <div class="jukebox-logo">
+    <div class="header-shape">
+      {@html headerShape}
+    </div>
+    <h1>
+      <span class="live-hed">Live Music</span><br>
+      <span class="juke-hed">Jukebox</span>
+    </h1>
+  </div>
   <h3>{copy.dek}</h3>
   <p>{copy.byline}</p>
 </div>
@@ -145,35 +153,67 @@
 </div>
 
 <style>
+  .jukebox-logo {
+    position: relative;
+    height: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 55rem;
+    margin: 0 auto;
+  }
+
+  .header-shape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 50rem;
+    width: 100%;
+  }
+
   h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    padding: 1rem 0 0 0;
+  }
+
+  h2 {
     margin: 0;
-    font-family: var(--narrow);
-    color: var(--jukebox-brown);
   }
 
   .intro-hed {
-    letter-spacing: 0.5rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
+    font-family: var(--sans);
+    letter-spacing: 0.75rem;
+    text-indent: 0.75rem;
+    font-size: 1.75rem;
+    display: inline-block;
   }
 
   .live-hed {
+    font-family: var(--sans);
+    color: var(--jukebox-red);
     text-transform: uppercase;
-    font-size: 5rem;
+    letter-spacing: 1.75rem;
+    text-indent: 1.75rem;
+    font-size: 3.5rem;
     font-weight: 700;
     line-height: 1;
+    text-align: center;
+    display: inline-block;
   }
 
   .juke-hed {
-    color: var(--jukebox-red);
+    font-family: var(--display);
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 9rem;
-    margin: 0;
+    font-size: 7rem;
+    margin: -1rem 0 0 0;
     line-height: 1.5;
-    border-top: 3px solid var(--jukebox-brown);
-    border-bottom: 3px solid var(--jukebox-brown);
-    font-style: italic;
+    text-align: center;
+    display: inline-block;
   }
   .example {
     display: flex;
@@ -201,7 +241,7 @@
   .top {
     text-align: center;
     margin: 0 auto;
-    padding: 0 0 3rem 0;
+    padding: 2rem 0 3rem 0;
   }
 
   .top p {
@@ -270,21 +310,34 @@
     .table {
       font-size: 0.9rem;
     }
-  }
 
-  @media only screen and (max-width: 700px) {
+    .jukebox-logo {
+      height: 15rem;
+    }
+
+    .header-shape {
+      max-width: 38rem;
+      width: 100%;
+    }
+
     .intro-hed {
-      font-size: 1rem;
+      font-size: 1.25rem;
+      letter-spacing: 0.5rem;
+      text-indent: 0.5rem;
     }
 
     .live-hed {
-      font-size: 3.5rem;
+      font-size: 2rem;
+      letter-spacing: 1.25rem;
+      text-indent: 1.25rem;
     }
 
     .juke-hed {
-      font-size: 5.5rem;
+      font-size: 5rem;
     }
+  }
 
+  @media only screen and (max-width: 700px) {
     .playercard {
       flex-wrap: wrap;
       justify-content: space-evenly;
@@ -310,6 +363,57 @@
       padding: 1rem;
       margin: 2rem auto;
       font-size: 0.8rem;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      padding: 0;
+    }
+
+    .jukebox-logo {
+      height: 9rem;
+    }
+
+    .header-shape {
+      max-width: 25rem;
+      width: 100%;
+    }
+
+    .intro-hed {
+      font-size: 1rem;
+      letter-spacing: 0.25rem;
+      text-indent: 0.25rem;
+    }
+
+    .live-hed {
+      font-size: 1.5rem;
+      letter-spacing: 0.75rem;
+      text-indent: 0.75rem;
+    }
+
+    .juke-hed {
+      font-size: 3.25rem;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    h1 {
+      margin-top: -0.5rem;
+    }
+
+    .jukebox-logo {
+      height: 8rem;
+    }
+
+    .live-hed {
+      font-size: 1.25rem;
+      letter-spacing: 0.5rem;
+      text-indent: 0.5rem;
+    }
+
+    .juke-hed {
+      font-size: 2.75rem;
     }
   }
 </style>

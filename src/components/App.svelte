@@ -7,6 +7,7 @@
   import { ready } from "../stores/jukebox.js";
   import Intro from "./Intro.svelte";
   import Methods from "./Methods.svelte";
+  import headerShape from "../svg/pudding/header-shape.svg";
 </script>
 
 <Meta />
@@ -22,8 +23,14 @@
     <Intro />
   </section>
   <section class="jukebox-container">
-    <div class="line-horiz">
-      <div class="mid-line"></div>
+    <div class="juke-label">
+      <div class="header-shape">
+        <h4>Jukebox</h4>
+        {@html headerShape}
+      </div>
+      <div class="line-horiz">
+        <div class="mid-line"></div>
+      </div>
     </div>
     {#if !$ready}
       <div class="loader"></div>
@@ -45,6 +52,37 @@
 <Footer />
 
 <style>
+  .juke-label {
+    position: relative;
+    height: 1.5rem;
+  }
+
+  .juke-label .line-horiz {
+    position: absolute;
+  }
+
+  .header-shape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    max-width: 14rem;
+  }
+
+  .header-shape h4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--display);
+    color: var(--jukebox-brown);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2rem;
+    margin: -0.125rem 0 0 0;
+  }
+
   .header {
     background-color: var(--jukebox-brown);
   }
@@ -62,7 +100,7 @@
     position: flex;
     margin: 0 auto;
     background-color: var(--jukebox-light-tan);
-    padding: 2rem 3rem;
+    padding: 2rem 3rem 6rem 3rem;
   }
 
   .loader {
@@ -92,9 +130,14 @@
   @media only screen and (max-width: 700px) {
     .intro {
       width: 100%;
-      padding: 2rem 1rem; 
+      padding: 2rem 1rem 4rem 1rem;
       border-left: none;
-      border-right: 3px solid var(--jukebox-brown);
+      border-right: none;
+    }
+
+    .header-shape h4 {
+      font-size: 1.7rem;
+      margin: -0.125rem 0 0 0;
     }
   }
 

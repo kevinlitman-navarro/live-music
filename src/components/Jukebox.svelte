@@ -137,7 +137,7 @@
     flex-direction: row;
     max-width: 82rem;
     margin: 0 auto;
-    padding: 2rem 2rem 0 2rem;
+    padding: 3rem 2rem 0 2rem;
   }
 
   .column1 {
@@ -309,7 +309,7 @@
 
   @media only screen and (max-width: 700px) {
     .jukebox {
-      padding: 2rem 1rem 0 1rem;
+      padding: 3rem 1rem 0 1rem;
     }
 
     .table {
