@@ -7,8 +7,8 @@
     "energy",
     "valence",
     "duration",
-    "liveness",
     "acousticness",
+    "instrumentalness",
   ].map((d) => ({
     name: d,
     label: d,

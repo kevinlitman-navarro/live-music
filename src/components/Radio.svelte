@@ -12,6 +12,7 @@
     str.toLowerCase().replace(/ /g, "-").replace(/\./g, "");
 
   $: list = buttons.map((d) => ({
+    slug: `${name}--${slugify(d.name)}`,
     id: slugify(d.name),
     label: d.label,
   }));
@@ -19,16 +20,16 @@
 
 <fieldset>
   <!-- <legend>{legend}</legend> -->
-  {#each list as { id, label }}
+  {#each list as { slug, id, label }}
     <div class="input-wrapper">
       <input
-        class="sr-only"
         type="radio"
+        class="sr-only"
         name="{name}"
-        id="{id}"
+        id="{slug}"
         bind:group="{value}"
         value="{id}" />
-      <label for="{id}"> {label} </label>
+      <label for="{slug}">{label}</label>
     </div>
   {/each}
 </fieldset>

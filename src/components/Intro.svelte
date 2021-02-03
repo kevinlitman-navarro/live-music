@@ -25,19 +25,17 @@
 </script>
 
 <div class="top">
-  <h2>
-    <span class="intro-hed">Introducing the</span><br>
-  </h2>
+  <h2><span class="intro-hed">Introducing the</span><br /></h2>
   <div class="jukebox-logo">
     <div class="header-shape">
       {@html headerShape}
     </div>
     <h1>
-      <span class="live-hed">Live Music</span><br>
+      <span class="live-hed">Live Music</span><br />
       <span class="juke-hed">Jukebox</span>
     </h1>
   </div>
-  <h3>{copy.dek}</h3>
+
   <p>{copy.byline}</p>
 </div>
 
@@ -272,8 +270,8 @@
   }
 
   .loader {
-    border: 16px solid #BFB2A2; /* Light grey */
-    border-top: 16px solid #D24939; /* Blue */
+    border: 16px solid #bfb2a2; /* Light grey */
+    border-top: 16px solid #d24939; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -348,7 +346,7 @@
     .player {
       order: 1;
       width: calc(50% - 2rem);
-      max-width: 150px; 
+      max-width: 150px;
     }
 
     .namecard {
