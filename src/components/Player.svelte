@@ -33,7 +33,7 @@
 <div class="group">
   {#key art}
     <div class="art" on:click="{playSound}">
-      <img class="album" alt="album cover art" src="{art}"/>
+      <img class="album" alt="album cover art" src="{art}" />
       <div class="studio-click">
         <Icon name="play-circle" strokeWidth="1px" stroke="{stroke}" />
       </div>
@@ -107,7 +107,7 @@
     font-family: var(--narrow);
     text-transform: capitalize;
     text-align: center;
-    color: #3B3332;
+    color: #3b3332;
     width: 100%;
     padding: 0;
     font-size: 0.9rem;
