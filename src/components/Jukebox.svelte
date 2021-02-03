@@ -45,7 +45,9 @@
 <section class="jukebox">
   <div class="column1">
     <div class="searchbar">
+      <h4>Artists</h4>
       <Searchbar on:message="{updateSearchString}" />
+      <p>... or click below to explore their songs</p>
       <div class="songlist">
         <Songlist on:message="{updateChartParameters}" />
       </div>
@@ -111,7 +113,7 @@
 <style>
   .playercard {
     display: flex;
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     justify-content: center;
     align-items: center;
     padding: 2rem;
@@ -120,36 +122,31 @@
   .namecard {
     margin: 0 10px;
     padding: 1rem;
-    min-width: 50%;
-    max-width: 50%;
-  }
-
-  .player {
-    background-color: #fefbf7;
+    min-width: 60%;
+    max-width: 60%;
   }
 
   .order {
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     padding: 1rem;
     margin: 0 0 1rem 0;
   }
 
   .jukebox {
-    background-color: #bfb2a2;
     display: flex;
     flex-direction: row;
     max-width: 82rem;
     margin: 0 auto;
-    padding: 2rem 2rem 0 2rem;
+    padding: 3rem 2rem 0 2rem;
   }
 
   .column1 {
     display: flex;
     flex-direction: column;
-    min-width: 24rem;
     align-items: center;
     margin: 0 1rem 0 0;
     position: relative;
+    min-width: calc(20vw + 2rem);
   }
 
   .fade {
@@ -169,6 +166,7 @@
     flex-direction: column;
     align-content: space-between;
     margin: 0 0 0 1rem;
+    flex-wrap: wrap;
   }
 
   .column3 {
@@ -176,24 +174,25 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    max-width: 14rem;
   }
 
   .column4 {
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     margin: 0 0 0 1rem;
     padding: 1rem;
     width: calc(100% - 16rem);
   }
 
-  .column4 h4 {
-    background: #3c3332;
+  .column4 h4, .searchbar h4 {
+    background: var(--jukebox-brown) ;
     font-family: var(--narrow);
     text-transform: uppercase;
     text-align: center;
     border-radius: 0.25rem;
     margin: 0 0 1rem 0;
     padding: 0.25rem 0;
-    color: #fefbf7;
+    color: var(--jukebox-light-tan);
     font-size: 1.25rem;
     font-weight: 500;
     height: 2.25rem;
@@ -207,27 +206,33 @@
   }
 
   .songlist {
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     max-width: 20vw;
+    margin-top: 1rem;
   }
 
   .searchbar {
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     max-width: 100%;
     padding: 1rem;
     height: 100%;
+    margin: 0;
+  }
+
+  .searchbar p {
+    font-family: var(--narrow);
+    font-size: 0.9rem;
   }
 
   .table {
-    max-width: 50vw;
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     margin-bottom: 1rem;
     font-family: var(--narrow);
   }
 
   .legend {
-    background-color: #d24939;
-    color: #fefbf7;
+    background-color: var(--jukebox-red);
+    color: var(--jukebox-light-tan);
     padding: 0 1rem 0 1rem;
     margin: 1rem 0 0 0;
   }
@@ -235,20 +240,121 @@
   .top-level {
     display: flex;
     margin: 0 0 1rem 0;
+    width: 100%;
   }
 
   .middle-level {
     display: flex;
     margin: 1rem 0;
+    width: 100%;
   }
 
   .bottom-level {
     display: flex;
     flex-direction: row;
     margin: 1rem 0 0 0;
+    width: 100%;
   }
 
-  .column3 {
-    max-width: 14rem;
+  @media only screen and (max-width: 1000px) {
+    .column3 {
+      max-width: 12rem;
+    }
+
+    .column4 {
+      width: calc(100% - 14rem)
+    }
+
+    .legend h2 {
+      font-size: 0.9em;
+    }
+
+    .table {
+      font-size: 0.9rem;
+    }
+
+    .namecard {
+      min-width: 60%;
+      max-width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .jukebox {
+      flex-direction: column;
+    }
+
+    .column1 {
+      width: 100%;
+    }
+
+    .searchbar {
+      width: 100%;
+      margin: 0 0 2rem 0;
+    }
+
+    .songlist, .fade, .searchbar p {
+      display: none;
+    }
+
+    .column2 {
+      width: 100%;
+      margin: 0;
+    }
+
+    .table {
+      max-width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .jukebox {
+      padding: 3rem 1rem 0 1rem;
+    }
+
+    .table {
+      font-size: 0.8rem;
+    }
+
+    .playercard {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 1rem;
+      margin: 0 auto;
+    }
+
+    .player {
+      order: 1;
+      width: calc(50% - 2rem);
+      max-width: 150px; 
+    }
+
+    .namecard {
+      order: 2;
+      width: 100%;
+      max-width: 100%;
+      margin: 2rem 0 0 0;
+      padding: 0;
+    }
+
+    .bottom-level {
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .column3 {
+      width: 100%;
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+
+    .legend {
+      display: none;
+    }
+
+    .column4 {
+      margin: 0;
+      width: 100%;
+    }
   }
 </style>

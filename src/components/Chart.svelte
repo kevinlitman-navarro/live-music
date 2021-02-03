@@ -108,7 +108,7 @@
   }
 
   .chart-wrapper {
-    background-color: #fefbf7;
+    background-color: var(--jukebox-light-tan);
     width: 100%;
     height: 100%;
   }

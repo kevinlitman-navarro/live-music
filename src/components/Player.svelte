@@ -51,6 +51,15 @@
 
   .studio-click {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+  }
+
+  .studio-click svg {
+    width: 100%;
   }
 
   .art {
@@ -64,6 +73,7 @@
     cursor: pointer;
     z-index: 1;
     border-radius: 10px;
+    position: relative;
   }
 
   .art:hover {
@@ -91,7 +101,6 @@
   img {
     display: inline;
     border-radius: 10px;
-    min-width: 10.5rem;
   }
 
   .label {

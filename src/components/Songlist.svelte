@@ -277,8 +277,6 @@
   let current = "Bob Dylan";
   $: sortData($orderby);
 </script>
-
-<p>Click an artist to explore their songs</p>
 {#if grouped.length}
   <ul>
     {#each grouped as d}
@@ -384,9 +382,9 @@
   }
 
   .header {
-    background-color: #3c3332;
+    background-color: var(--jukebox-brown);
     border-radius: 5px;
-    color: #fefbf7;
+    color: var(--jukebox-light-tan);
     text-transform: capitalize;
     text-align: center;
     width: fit-content;
@@ -399,5 +397,16 @@
 
   .track-list li:last-of-type {
     margin: 0 0 3rem 0;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    p {
+      font-size: 0.8rem;
+    }
+
+    .artist-name {
+      font-size: 1rem;
+      padding: 0.125rem 0 0.125rem 0.25rem;
+    }
   }
 </style>

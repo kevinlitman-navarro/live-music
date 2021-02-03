@@ -11,7 +11,7 @@
 <style>
   .wordmark {
     max-width: 10em;
-    margin: 1em auto;
+    margin: 0 auto;
   }
 
   .wordmark a {

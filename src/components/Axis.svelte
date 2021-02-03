@@ -79,7 +79,9 @@
     class="annotation right"
     transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
-      <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+      <g transform="translate(-20,0)">
+        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+      </g>
       <text text-anchor="end">More different</text>
     </g>
   </g>
@@ -105,7 +107,9 @@
     class="annotation right"
     transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
-      <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
+      <g transform="translate(-20,0)">
+        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+      </g>
       <text text-anchor="end">More {$orderby}</text>
     </g>
   </g>
