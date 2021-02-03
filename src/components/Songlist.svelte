@@ -95,8 +95,11 @@
             active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
             active_artist_name = grouped[0].artist_name_studio;
             filename = folder_name.concat(active_track_key, endpoint);
+            console.log(filename);
+
             csv(filename)
               .then((selected) => {
+                console.log("bugcheck");
                 $song = selected[0];
                 $song["difference_scaled"] = scale($song[current_metric]);
                 console.log($song.artist_name_studio);
@@ -277,6 +280,7 @@
   let current = "Bob Dylan";
   $: sortData($orderby);
 </script>
+
 {#if grouped.length}
   <ul>
     {#each grouped as d}

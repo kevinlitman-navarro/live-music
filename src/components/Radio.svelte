@@ -5,31 +5,38 @@
 
   export let buttons;
   //   export let legend;
-  import { orderby } from "../stores/jukebox.js";
+  export let value;
+  export let name;
 
   export const slugify = (str = "") =>
     str.toLowerCase().replace(/ /g, "-").replace(/\./g, "");
+
+  $: list = buttons.map((d) => ({
+    id: slugify(d.name),
+    label: d.label,
+  }));
 </script>
 
 <fieldset>
   <!-- <legend>{legend}</legend> -->
-  {#each buttons as { name, label }}
-  <div class="input-wrapper">
+  {#each list as { id, label }}
+    <div class="input-wrapper">
       <input
-      class="sr-only"
-      type="radio"
-      id="{slugify(name)}"
-      bind:group="{$orderby}"
-      value="{slugify(name)}" />
-      <label for="{slugify(name)}"> {label} </label>
-  </div>
+        class="sr-only"
+        type="radio"
+        name="{name}"
+        id="{id}"
+        bind:group="{value}"
+        value="{id}" />
+      <label for="{id}"> {label} </label>
+    </div>
   {/each}
 </fieldset>
 
 <style>
   .input-wrapper {
     border-bottom: 1px solid rgba(178, 160, 114, 0.2);
-    padding: 0.5rem 0 0.5rem 0.25rem; 
+    padding: 0.5rem 0 0.5rem 0.25rem;
   }
 
   fieldset {

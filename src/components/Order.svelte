@@ -1,25 +1,24 @@
 <script>
   import Radio from "./Radio.svelte";
+  import { orderby } from "../stores/jukebox.js";
 
-  const tempo = { name: "Tempo", label: "Tempo" };
-  const overall = { name: "Overall", label: "Overall" };
-  const energy = { name: "Energy", label: "Energy" };
-  const valence = { name: "Valence", label: "Valence" };
-  const duration = { name: "Duration", label: "Duration" };
-  const liveness = { name: "Liveness", label: "Liveness" };
-  const acousticness = { name: "Acousticness", label: "Acousticness" };
-  const speechiness = { name: "Speechiness", label: "Speechiness" };
-  const instrumentalness = {
-    name: "Instrumentalness",
-    label: "Instrumentals",
-  };
+  const buttons = [
+    "overall",
+    "energy",
+    "valence",
+    "duration",
+    "liveness",
+    "acousticness",
+  ].map((d) => ({
+    name: d,
+    label: d,
+  }));
 </script>
 
 <div>
   <h4>Order By</h4>
   <div>
-    <Radio
-      buttons="{[overall, energy, valence, duration, acousticness, instrumentalness]}" />
+    <Radio buttons="{buttons}" bind:value="{$orderby}" name="metric" />
   </div>
 </div>
 
