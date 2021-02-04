@@ -15,8 +15,11 @@
 
 <style>
   h3 {
-    font-family: var(--serif);
+    font-family: var(--narrow);
     text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-main);
   }
 
   .methods {
@@ -43,5 +46,20 @@
   .mid-line {
     width: 100%;
     border-top: 3px solid var(--jukebox-brown);
+  }
+
+   p {
+     max-width: 40rem;
+     margin: 1rem auto;
+     color: var(--text-main);
+   }
+
+   @media only screen and (max-width: 700px) {
+    .methods {
+      width: 100%;
+      padding: 2rem 1rem 4rem 1rem;
+      border-left: none;
+      border-right: none;
+    }
   }
 </style>

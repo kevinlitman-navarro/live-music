@@ -74,6 +74,7 @@
     z-index: 1;
     border-radius: 10px;
     position: relative;
+    width: 100%;
   }
 
   .art:hover {
@@ -101,6 +102,7 @@
   img {
     display: inline;
     border-radius: 10px;
+    width: 100%;
   }
 
   .label {
@@ -115,5 +117,12 @@
   }
 
   .group {
+    min-height: 10rem; 
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .group {
+      min-height: 9rem; 
+    }
   }
 </style>

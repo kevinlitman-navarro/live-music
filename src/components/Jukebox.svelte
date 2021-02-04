@@ -114,16 +114,22 @@
   .playercard {
     display: flex;
     background-color: var(--jukebox-light-tan);
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 2rem;
+    height: 16rem;
+    width: 100%;
+  }
+
+  .player {
+    max-width: 9rem;
   }
 
   .namecard {
     margin: 0 10px;
-    padding: 1rem;
-    min-width: 60%;
-    max-width: 60%;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    min-height: 9rem;
   }
 
   .order {
@@ -167,6 +173,7 @@
     align-content: space-between;
     margin: 0 0 0 1rem;
     flex-wrap: wrap;
+    width: calc(100% - 20vw + 2rem);
   }
 
   .column3 {
@@ -321,6 +328,7 @@
       justify-content: space-evenly;
       padding: 1rem;
       margin: 0 auto;
+      height: 24rem;
     }
 
     .player {
