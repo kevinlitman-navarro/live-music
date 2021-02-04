@@ -7,3 +7,4 @@ export const ready = writable(false);
 export const tooltip_text = writable(null);
 export const active_artist = writable("Bob Dylan");
 export const show_duplicates = writable(true);
+export const current_howl = writable();

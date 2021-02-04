@@ -1,6 +1,7 @@
 <script>
   import { song } from "../stores/jukebox.js";
   import { orderby } from "../stores/jukebox.js";
+  import { current_howl } from "../stores/jukebox.js";
   import { active_artist } from "../stores/jukebox.js";
   import Player from "./Player.svelte";
   import Table from "./Table.svelte";
@@ -10,6 +11,8 @@
   import Namecard from "./Namecard.svelte";
   import Legend from "./Legend.svelte";
   import Chart from "./Chart.svelte";
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
 
   let data = [];
   let search_string;
@@ -18,8 +21,6 @@
   let active_artist_list;
   let scale;
 
-  //$: console.log(flat_data);
-
   function updateSearchString(event) {
     if (event.detail.text) {
       search_string = event.detail.text;
@@ -27,11 +28,6 @@
     } else {
       search_string = undefined;
     }
-
-    // console.log(search_string);
-    // data = data.filter((d) =>
-    //   d.artist_name_studio.toLowerCase().includes({ search_string })
-    // );
   }
 
   function updateChartParameters(event) {
@@ -184,8 +180,9 @@
     width: calc(100% - 16rem);
   }
 
-  .column4 h4, .searchbar h4 {
-    background: var(--jukebox-brown) ;
+  .column4 h4,
+  .searchbar h4 {
+    background: var(--jukebox-brown);
     font-family: var(--narrow);
     text-transform: uppercase;
     text-align: center;
@@ -262,7 +259,7 @@
     }
 
     .column4 {
-      width: calc(100% - 14rem)
+      width: calc(100% - 14rem);
     }
 
     .legend h2 {
@@ -293,7 +290,9 @@
       margin: 0 0 2rem 0;
     }
 
-    .songlist, .fade, .searchbar p {
+    .songlist,
+    .fade,
+    .searchbar p {
       display: none;
     }
 
@@ -326,7 +325,7 @@
     .player {
       order: 1;
       width: calc(50% - 2rem);
-      max-width: 150px; 
+      max-width: 150px;
     }
 
     .namecard {

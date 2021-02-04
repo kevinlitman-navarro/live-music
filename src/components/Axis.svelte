@@ -80,9 +80,9 @@
     transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
       <g transform="translate(-20,0)">
-        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
       </g>
-      <text text-anchor="end">More different</text>
+      <text text-anchor="end">Live version is more different</text>
     </g>
   </g>
 {:else}
@@ -97,7 +97,7 @@
 
   <g
     class="annotation zero"
-    transform="translate({$xScale(0)},{$height * 0.05})">
+    transform="translate({$xScale(0)},{$height * 0.95})">
     <g class="arrow">
       <text text-anchor="middle">No difference</text>
     </g>
@@ -108,7 +108,7 @@
     transform="translate({$width * 1},{$height * 0.05})">
     <g class="arrow">
       <g transform="translate(-20,0)">
-        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px"/>
+        <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
       </g>
       <text text-anchor="end">More {$orderby}</text>
     </g>

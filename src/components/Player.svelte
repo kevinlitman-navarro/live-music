@@ -1,41 +1,100 @@
 <script>
   import howler from "howler";
   import Icon from "./helpers/Icon.svelte";
-  import { csv } from "d3-fetch";
-  import { onMount } from "svelte";
+  import { current_howl } from "../stores/jukebox.js";
 
   export let preview;
+
   export let art;
+
   export let label;
+
   const stroke = "#EEEEEE";
 
   //set up a howl for the studio version
   const Howl = howler.Howl;
-  let sound;
+  let sound = null;
 
   function playSound() {
-    //chceck to see if we already have a howl loaded/playing
-    if (sound != null) {
+    try {
       sound.stop();
       sound.unload();
-      sound = null;
-    } else {
+    } catch (error) {}
+
+    if (!$current_howl) {
+      console.log("if");
       sound = new Howl({
         format: ["mp3"],
         src: [preview],
       });
       sound.play();
+      $current_howl = sound;
+
       console.log(sound);
+    } else {
+      console.log("branch");
+      if (sound == $current_howl) {
+        console.log("of");
+        sound.stop();
+        sound.unload();
+        sound = null;
+        $current_howl = null;
+      } else {
+        console.log("else");
+        $current_howl.stop();
+        $current_howl.unload();
+        sound = new Howl({
+          format: ["mp3"],
+          src: [preview],
+        });
+        sound.play();
+        $current_howl = sound;
+      }
     }
+
+    // //chceck to see if we already have a howl loaded/playing
+    // if (sound != null && sound == $current_howl) {
+    //   sound.stop();
+    // } else if ($current_howl != null) {
+    //   $current_howl.stop();
+    //   $current_howl.unload();
+    // }
+    // if (sound !== $current_howl) {
+    //   // if ($current_howl) {
+    //   //   $current_howl.stop();
+    //   //   $current_howl.unload();
+    //   //   $current_howl = null;
+    //   // }
+    //   sound = new Howl({
+    //     format: ["mp3"],
+    //     src: [preview],
+    //   });
+    //   sound.play();
+    //   $current_howl = sound;
+    // }
   }
+
+  let getIcon = (howl) => {
+    if (!howl) {
+      return "play-circle";
+    } else if (howl["_src"] == preview) {
+      return "pause-circle";
+      console.log("yee");
+    } else {
+      return "play-circle";
+    }
+  };
 </script>
 
-<div class="group">
+<div class="group" on:click="{playSound}">
   {#key art}
-    <div class="art" on:click="{playSound}">
+    <div class="art">
       <img class="album" alt="album cover art" src="{art}" />
       <div class="studio-click">
-        <Icon name="play-circle" strokeWidth="1px" stroke="{stroke}" />
+        <Icon
+          name="{getIcon($current_howl)}"
+          strokeWidth="1px"
+          stroke="{stroke}" />
       </div>
     </div>
     <p class="label">{label}</p>
