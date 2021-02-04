@@ -125,7 +125,7 @@
   }
   line,
   .tick line {
-    stroke: var(--default);
+    stroke: var(--jukebox-dark-tan);
     stroke-dasharray: 2;
     stroke-opacity: 0.33;
   }

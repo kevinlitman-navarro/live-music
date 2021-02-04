@@ -5,7 +5,7 @@
 </script>
 
 <div class="namecard namecard-inset">
-  <div class="studio-name song">{track_name_studio}</div>
+  <div class="studio-name song"><p>{track_name_studio}</p></div>
   <div class="artist-box">
     <div class="left side">
       <div class="line"></div>
@@ -13,7 +13,7 @@
 
     <div class="artist-name">
       <div class="left-triangle"></div>
-      <div>{artist_name_studio}</div>
+      <div><p>{artist_name_studio}</p></div>
       <div class="right-triangle"></div>
     </div>
 
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="live-name song">{track_name_live}</div>
+  <div class="live-name song"><p>{track_name_live}</p></div>
 </div>
 
 <!-- <div class="namecard">
@@ -102,7 +102,13 @@
     font-weight: 700;
     font-family: var(--narrow);
     text-transform: uppercase;
-    padding: 0.25rem 0;
+    padding: 0.25rem;
     line-height: 1;
+    width: 100%;
+  }
+
+  .song p {
+    margin: 0;
+    width: 100%;
   }
 </style>
