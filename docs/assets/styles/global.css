@@ -109,3 +109,16 @@
 .juke-label .header-shape svg path {
   stroke-width: 12px;
 }
+
+.x-axis .tick text {
+  display: none;
+}
+
+.point-wrapper circle:hover {
+  stroke: var(--jukebox-brown);
+  stroke-width: 3px;
+}
+
+.arrow svg {
+  stroke: var(--jukebox-dark-tan);
+}
