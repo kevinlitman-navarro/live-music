@@ -84,7 +84,7 @@
         <td>{parseFloat(song.liveness_live).toFixed(2)}</td>
         <td>{parseFloat(song.difference_liveness).toFixed(2)}</td>
       </tr>
-      <tr
+      <!-- <tr
         class="row overall"
         id="overall"
         class:active="{'overall' == highlight_row}">
@@ -92,7 +92,7 @@
         <td></td>
         <td></td>
         <td>{parseFloat(song.difference_overall).toFixed(2)}</td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 </div>

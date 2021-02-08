@@ -22,25 +22,19 @@
     } catch (error) {}
 
     if (!$current_howl) {
-      console.log("if");
       sound = new Howl({
         format: ["mp3"],
         src: [preview],
       });
       sound.play();
       $current_howl = sound;
-
-      console.log(sound);
     } else {
-      console.log("branch");
       if (sound == $current_howl) {
-        console.log("of");
         sound.stop();
         sound.unload();
         sound = null;
         $current_howl = null;
       } else {
-        console.log("else");
         $current_howl.stop();
         $current_howl.unload();
         sound = new Howl({
@@ -79,7 +73,6 @@
       return "play-circle";
     } else if (howl["_src"] == preview) {
       return "pause-circle";
-      console.log("yee");
     } else {
       return "play-circle";
     }
@@ -115,10 +108,6 @@
     width: 50%;
     transform: translate(-50%, -50%);
     height: 50%;
-  }
-
-  .studio-click svg {
-    width: 100%;
   }
 
   .art {
@@ -161,7 +150,6 @@
   img {
     display: inline;
     border-radius: 10px;
-    width: 100%;
   }
 
   .label {
@@ -176,12 +164,12 @@
   }
 
   .group {
-    min-height: 10rem; 
+    min-height: 10rem;
   }
 
   @media only screen and (max-width: 1000px) {
     .group {
-      min-height: 9rem; 
+      min-height: 9rem;
     }
   }
 </style>

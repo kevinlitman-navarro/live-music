@@ -35,7 +35,6 @@
   let extent_values;
   let scale_extent;
   let scale;
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
   function updateSong(v) {
     dispatch("message", {
@@ -49,16 +48,12 @@
     csv("assets/data/final_data_0128/track_name_dictionary.csv")
       .then((tracks) => {
         trackDictionary = tracks;
-        console.log(trackDictionary);
       })
       .then(() => {
         csv("assets/data/final_data_0128/songlist_wide_optimized.csv").then(
           (raw) => {
             flat_data = raw;
-            //       sorted = flat_data.sort((a, b) =>
-            //   descending(Math.abs(a[current_metric]), Math.abs(b[current_metric]))
-            // );
-            console.log("flat", flat_data);
+
             updateScale();
             grouped = Array.from(
               group(flat_data, (d) => d.artist_id),
@@ -67,12 +62,6 @@
                 artist_name_studio: artistDictionary.find(
                   (a) => a.artist_id == artist_id
                 )["artist_name_studio"],
-                // test: flat_data
-                //   .filter((b) => {
-                //     return b.artist_id == artist_id;
-                //   })
-                //   .map((g) => Math.abs(+g[current_metric]))
-                //   .reduce(reducer),
 
                 artist_songlist: artist_songlist.map((d) => ({
                   ...d,
@@ -90,30 +79,26 @@
                 })),
               })
             );
-            console.log("grouped", grouped);
+
             sortData($orderby);
             active_track_key = "18GiV1BaXzPVYpp9rmOg0E2Xc1Xd7q4bunmnYkwIwJGY";
             active_artist_name = grouped[0].artist_name_studio;
             filename = folder_name.concat(active_track_key, endpoint);
-            console.log(filename);
 
             csv(filename)
               .then((selected) => {
-                console.log("bugcheck");
                 $song = selected[0];
                 $song["difference_scaled"] = scale($song[current_metric]);
-                console.log($song.artist_name_studio);
               })
               .then(() => {
                 active_artist_list = grouped.find(
                   (d) => d.artist_name_studio == $song.artist_name_studio
                 );
-                console.log(active_artist_list);
               })
               .then(() => {
                 updateSong($song);
                 $ready = true;
-                console.log("should appear now");
+
                 mounted = true;
               })
               .catch((error) => {
@@ -135,7 +120,6 @@
       .then((selected) => {
         $song = selected[0];
         $song["difference_scaled"] = scale($song[current_metric]);
-        console.log($song.artist_name_studio);
       })
       .then(() => {
         active_artist_list = grouped.find(
@@ -145,7 +129,6 @@
               (g) => g.artist_name_studio == $song.artist_name_studio
             )["artist_id"]
         );
-        console.log(active_artist_list);
       })
       .then(() => {
         updateSong($song);
@@ -171,7 +154,6 @@
         .then((selected) => {
           $song = selected[0];
           $song["difference_scaled"] = scale($song[current_metric]);
-          console.log($song.artist_name_studio);
         })
         .then(() => {
           updateSong($song);
@@ -189,7 +171,6 @@
 
   let scrollToArtist = (number_of_artists_ahead) => {
     if (mounted) {
-      console.log(number_of_artists_ahead);
       let x = document.querySelector("li.artist-name");
       let objectHeight = x.offsetHeight;
       let target = document.getElementsByClassName("artist-name selected")[0];
@@ -204,7 +185,7 @@
     //reorder the data using v as column name
     grouped.forEach((g) => {
       artist_songlist = g.artist_songlist;
-      // console.log(artist_songlist);
+
       artist_songlist.sort((a, b) =>
         descending(Math.abs(a[current_metric]), Math.abs(b[current_metric]))
       );
@@ -215,50 +196,34 @@
   }
 
   function updateScale() {
-    console.log(current_metric);
     extent_values = [];
     flat_data.forEach((d) => extent_values.push(Math.abs(d[current_metric])));
-    console.log("old extent", scale_extent);
+
     scale_extent = extent(extent_values);
-    console.log("new extent", scale_extent);
+
     scale = scaleLinear(scale_extent, [0, 1]);
     $globalScale = scale;
     flat_data.forEach(
       (d) => (d["difference_scaled"] = scale(Math.abs(d[current_metric])))
     );
     flat_data = flat_data;
-    // grouped.forEach(
-    //   (d) =>
-    //     (d.test = d.artist_songlist
-    //       .map((g) => Math.abs(+g[current_metric]))
-    //       .reduce(reducer))
-    // );
-    // console.log(grouped);
   }
 
   let visible_track_keys = [];
   const identifier = "#";
 
   let handleNewArtist = (d) => {
-    console.log(1, $active_artist);
-    console.log(2, d);
     if ($active_artist != d) {
       $active_artist = d;
-      console.log("working", $active_artist);
+
       var x = grouped.find((v) => v.artist_name_studio == $active_artist);
-      console.log(x);
-      console.log(
-        grouped.indexOf(
-          grouped.find((v) => v.artist_name_studio == $active_artist)
-        )
-      );
+
       scrollToArtist(
         grouped.indexOf(
           grouped.find((v) => v.artist_name_studio == $active_artist)
         )
       );
     }
-    console.log(3, $active_artist);
   };
 
   function getUniqueList(songlist) {

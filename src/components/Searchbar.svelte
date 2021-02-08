@@ -10,7 +10,6 @@
   const dispatch = createEventDispatcher();
 
   function search(v) {
-    console.log(v);
     dispatch("message", {
       text: v,
     });

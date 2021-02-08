@@ -149,6 +149,7 @@
     margin: 0 1rem 0 0;
     position: relative;
     min-width: calc(20vw + 2rem);
+    height: 100%;
   }
 
   .fade {
@@ -182,9 +183,10 @@
 
   .column4 {
     background-color: var(--jukebox-light-tan);
-    margin: 0 0 0 1rem;
+    margin: 0 0 1rem 1rem;
     padding: 1rem;
     width: calc(100% - 16rem);
+    height: fit-content;
   }
 
   .column4 h4,
@@ -200,9 +202,6 @@
     font-size: 1.25rem;
     font-weight: 500;
     height: 2.25rem;
-  }
-
-  .column2 > div {
   }
 
   .side {
@@ -239,6 +238,7 @@
     color: var(--jukebox-light-tan);
     padding: 0 1rem 0 1rem;
     margin: 1rem 0 0 0;
+    display: none;
   }
 
   .top-level {
@@ -267,10 +267,6 @@
 
     .column4 {
       width: calc(100% - 14rem);
-    }
-
-    .legend h2 {
-      font-size: 0.9em;
     }
 
     .table {

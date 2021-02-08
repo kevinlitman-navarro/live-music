@@ -8,7 +8,6 @@
   export let formatTick = (d) => d;
   export let baseline = false;
   export let snapTicks = false;
-  export let ticks = undefined;
   export let xTick = undefined;
   export let metric;
   const stroke = "#666666";
@@ -35,12 +34,13 @@
   }
 </script>
 
-{#if metric != 'difference_overall'}
+{#if metric != "difference_overall"}
   <g class="axis x-axis">
     {#each tickVals as tick, i}
       <g
         class="tick tick-{tick}"
-        transform="translate({$xScale(tick)},{$yRange[0]})">
+        transform="translate({$xScale(tick)},{$yRange[0]})"
+      >
         {#if gridlines !== false}
           <line y1="{$height * -1}" y2="0" x1="0" x2="0"></line>
         {/if}
@@ -49,26 +49,24 @@
           y="{yTick}"
           dx="{dxTick}"
           dy="{dyTick}"
-          text-anchor="{textAnchor(i)}">
+          text-anchor="{textAnchor(i)}"
+        >
           {formatTick(tick)}
         </text>
       </g>
     {/each}
     {#if baseline === true}
-      <line
-        class="baseline"
-        y1="{$height}"
-        y2="{$height}"
-        x1="0"
-        x2="{$width}"></line>
+      <line class="baseline" y1="{$height}" y2="{$height}" x1="0" x2="{$width}"
+      ></line>
     {/if}
   </g>
 {/if}
 
-{#if metric == 'difference_overall'}
+{#if metric == "difference_overall"}
   <g
     class="annotation left"
-    transform="translate({$width * 0},{$height * 0.05})">
+    transform="translate({$width * 0},{$height * 0.05})"
+  >
     <g class="arrow">
       <Icon name="arrow-left" stroke="{stroke}" strokeWidth="2px" />
       <text text-anchor="start">Less different</text>
@@ -77,7 +75,8 @@
 
   <g
     class="annotation right"
-    transform="translate({$width * 1},{$height * 0.05})">
+    transform="translate({$width * 1},{$height * 0.05})"
+  >
     <g class="arrow">
       <g transform="translate(-20,0)">
         <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />
@@ -88,7 +87,8 @@
 {:else}
   <g
     class="annotation left"
-    transform="translate({$width * 0},{$height * 0.05})">
+    transform="translate({$width * 0},{$height * 0.05})"
+  >
     <g class="arrow">
       <Icon name="arrow-left" stroke="{stroke}" strokeWidth="2px" />
       <text text-anchor="start">Less {$orderby}</text>
@@ -97,7 +97,8 @@
 
   <g
     class="annotation zero"
-    transform="translate({$xScale(0)},{$height * 0.95})">
+    transform="translate({$xScale(0)},{$height * 0.98})"
+  >
     <g class="arrow">
       <text text-anchor="middle">No difference</text>
     </g>
@@ -105,7 +106,8 @@
 
   <g
     class="annotation right"
-    transform="translate({$width * 1},{$height * 0.05})">
+    transform="translate({$width * 1},{$height * 0.05})"
+  >
     <g class="arrow">
       <g transform="translate(-20,0)">
         <Icon name="arrow-right" stroke="{stroke}" strokeWidth="2px" />

@@ -17,7 +17,6 @@
   const dispatch = createEventDispatcher();
 
   //export let fill = "#D24939";
-  let highlight = "#000";
   export let r;
   export let figureHeight = 300;
   let mounted = false;
@@ -129,28 +128,5 @@
   .point-wrapper {
     position: relative;
     pointer-events: all;
-  }
-
-  /* .tooltip-wrapper {
-    background-color: white;
-  } */
-  .tooltip {
-    display: none;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    pointer-events: none;
-
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
-
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .point-wrapper:hover .tooltip {
-    display: block;
   }
 </style>

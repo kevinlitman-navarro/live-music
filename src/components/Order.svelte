@@ -8,6 +8,7 @@
     "valence",
     "duration",
     "acousticness",
+    "liveness",
     "instrumentalness",
   ].map((d) => ({
     name: d,
