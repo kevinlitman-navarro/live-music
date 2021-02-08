@@ -1,26 +1,15 @@
 <script>
   export let value;
   $: r = value * 180;
-  $: r_2 = r * -1;
 </script>
 
 <div class="labels">
-  <div class="half-circle" style="transform:rotate(180deg)"></div>
-  <div class="coverup"></div>
-  <div class="knob" style="transform:rotate({r}deg)">
-    <!-- <div class="circle one"></div>
-      <div class="circle two"></div>
-      <div class="circle three"></div>
-      <div class="circle four"></div>
-      <div class="circle five"></div>
-      <div class="circle six"></div>
-      <div class="circle seven"></div>
-      <div class="circle eight"></div>
-      <div class="circle nine"></div>
-      <div class="circle ten"></div>
-      <div class="circle eleven"></div> -->
-
-    <div class="line"></div>
+  <div class="dots"></div>
+  <div class="cover"></div>
+  <div class='knob-wrapper'>
+    <div class="knob" style="transform:rotate({r}deg)">
+      <div class="line"></div>
+    </div>
   </div>
 </div>
 
@@ -28,21 +17,66 @@
   .labels {
     width: 3rem;
     position: relative;
+    height: 3rem;
+    margin: 0 1rem;
   }
 
-  .half-circle {
-    width: 3em;
-    top: -8%;
-    left: 6%;
-    height: 1.5em;
-    border-bottom-left-radius: 1.5em;
-    border-bottom-right-radius: 1.5em;
-    border: 0.18em dotted gray;
-    border-top: 0;
-    box-sizing: border-box;
-    display: block;
+  .knob-wrapper {
     position: absolute;
+    width: 2.5em;
+    height: 2.5em;
   }
+
+  .cover {
+    position: absolute;
+    width: 3em;
+    bottom: 0;
+    height: 1.5em;
+    background-color: var(--jukebox-light-tan);
+  }
+
+  .dots {
+    border: 1px dotted black;
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .dots::before {
+    display: inline-block;
+    font-family: var(--narrow);
+    content: 'MIN';
+    font-size: 0.5rem;
+    top: 1.5rem;
+    left: -0.8rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 1;
+    color: var(--jukebox-brown);
+  }
+
+  .dots::after {
+    display: inline-block;
+    font-family: var(--narrow);
+    content: 'MAX';
+    font-size: 0.5rem;
+    top: 1.5rem;
+    right: -1rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 1;
+    color: var(--jukebox-brown);
+  }
+
+  .knob-wrapper {
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    transform: translate(-0.125rem, -0.125rem);
+    z-index: 1;
+  }
+
   .knob {
     display: block;
     position: relative;
@@ -56,84 +90,6 @@
     border-width: thin;
     border-color: #bfbfbf;
     margin: 0em;
-  }
-
-  .circle-container {
-    position: absolute;
-    display: block;
-    top: -10%;
-    right: -5%;
-    width: 115%;
-    height: 115%;
-    margin: 0em;
-    border-radius: 50%;
-    border-top-left-radius: 110%; /* 100px of height + 10px of border */
-    border-top-right-radius: 110%; /* 100px of height + 10px of border */
-    border: 2px dotted gray;
-    border-bottom: 0;
-  }
-
-  .circle {
-    border-radius: 50%;
-    width: 0.2em;
-    height: 0.2em;
-    position: fixed;
-    background-color: var(--red);
-  }
-
-  .one {
-    top: 82%;
-    left: -10%;
-  }
-
-  .two {
-    top: 54%;
-    left: -18%;
-  }
-
-  .three {
-    top: 28%;
-    left: -20%;
-  }
-
-  .four {
-    top: 6%;
-    left: -10%;
-  }
-
-  .five {
-    top: -10%;
-    left: 12%;
-  }
-
-  .six {
-    top: -16%;
-    left: 40%;
-  }
-
-  .seven {
-    top: -10%;
-    right: 12%;
-  }
-
-  .eight {
-    top: 6%;
-    right: -10%;
-  }
-
-  .nine {
-    top: 28%;
-    right: -20%;
-  }
-
-  .ten {
-    top: 54%;
-    right: -18%;
-  }
-
-  .eleven {
-    top: 82%;
-    right: -10%;
   }
 
   .line {

@@ -106,7 +106,7 @@
   }
 
   tr {
-    border-bottom: 1px solid rgba(178, 160, 114, 0.2);
+    border-bottom: 1px solid var(--jukebox-med-tan);
   }
 
   td {

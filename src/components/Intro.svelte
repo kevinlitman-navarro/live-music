@@ -36,7 +36,7 @@
     </h1>
   </div>
 
-  <p>
+  <p class="byline">
     {@html copy.byline}
   </p>
 </div>

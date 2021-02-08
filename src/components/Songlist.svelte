@@ -322,7 +322,7 @@
   .artist-name:hover,
   .artist-name.selected {
     color: var(--red);
-    background-color: rgba(178, 160, 114, 0.2);
+    background-color: var(--jukebox-med-tan);
   }
 
   .track-name {
@@ -330,7 +330,7 @@
     color: var(--off-black);
     font-size: 1em;
     font-family: var(--narrow);
-    border-bottom: 1px solid rgba(178, 160, 114, 0.2);
+    border-bottom: 1px solid var(--jukebox-med-tan);
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
     display: none;
@@ -338,7 +338,7 @@
   }
 
   .track-name:hover {
-    background: rgba(178, 160, 114, 0.2);
+    background: var(--jukebox-med-tan);
     font-weight: 700;
   }
 
