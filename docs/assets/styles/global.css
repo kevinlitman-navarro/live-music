@@ -31,6 +31,7 @@
 
   --jukebox-light-tan: #FEFBF7;
   --jukebox-dark-tan: #BFB2A2;
+  --jukebox-med-tan: #F0E9E0;
   --jukebox-brown: #3C3332;
   --jukebox-red: #D24939;
 
@@ -121,4 +122,17 @@
 
 .arrow svg {
   stroke: var(--jukebox-dark-tan);
+}
+
+.track-name:hover .cover {
+  background-color: var(--jukebox-med-tan);
+}
+
+.byline a {
+  color: var(--jukebox-brown);
+  font-weight: 700;
+}
+
+.byline a:hover {
+  color: var(--jukebox-red);
 }

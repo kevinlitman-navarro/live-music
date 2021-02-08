@@ -25,6 +25,7 @@
       sound = new Howl({
         format: ["mp3"],
         src: [preview],
+        volume: 0.5,
       });
       sound.play();
       $current_howl = sound;
@@ -40,6 +41,7 @@
         sound = new Howl({
           format: ["mp3"],
           src: [preview],
+          volume: 0.5,
         });
         sound.play();
         $current_howl = sound;
@@ -87,7 +89,8 @@
         <Icon
           name="{getIcon($current_howl)}"
           strokeWidth="1px"
-          stroke="{stroke}" />
+          stroke="{stroke}"
+        />
       </div>
     </div>
     <p class="label">{label}</p>
