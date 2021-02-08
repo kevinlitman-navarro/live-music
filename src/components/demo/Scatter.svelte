@@ -65,7 +65,7 @@
   $: $data, $x, createSimulation();
 
   let active_track_key;
-  const folder_name = "assets/data/final_data_0107/single_rows/";
+  const folder_name = "assets/data/final_data_0128/single_rows/";
   const endpoint = ".csv";
   let filename;
 
@@ -111,7 +111,8 @@
     <g
       class="point-wrapper"
       on:mouseenter="{handleMouseover(d)}"
-      on:mouseout="{handleMouseout}">
+      on:mouseout="{handleMouseout}"
+    >
       <circle
         class="point"
         cx="{d.x}"
