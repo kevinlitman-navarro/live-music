@@ -38,10 +38,11 @@
     {#await fetchData then data}
       {#each data as { hed, url, image }}
         <div class="story">
-          <a href="{url}">
+          <a href="https://pudding.cool/{url}">
             <img
               src="https://pudding.cool/common/assets/thumbnails/640/{image}.jpg"
-              alt="{hed}" />
+              alt="{hed}"
+            />
             <span>{hed}</span>
           </a>
         </div>
@@ -55,8 +56,8 @@
     </div>
     <p>
       <a href="https://pudding.cool">The Pudding</a>
-      is a digital publication that explains ideas debated in culture with
-      visual essays.
+      is a digital publication that explains ideas debated in culture with visual
+      essays.
     </p>
   </section>
 
