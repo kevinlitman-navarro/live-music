@@ -32,7 +32,7 @@
     </div>
     <h1>
       <span class="live-hed">Live Music</span><br />
-      <span class="juke-hed">Jukebox</span>
+      <span class="juke-hed">Analyst</span>
     </h1>
   </div>
 
@@ -61,24 +61,28 @@
   {#if $song}
     <div
       class="playercard"
-      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}"
+    >
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/fc1dd43539f9fbdaa17a4b012d61d50864e6f1fa?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b2737d214af8499aa95ad220f573"
-          label="STUDIO VERSION" />
+          label="STUDIO VERSION"
+        />
       </div>
       <div class="namecard">
         <Namecard
           track_name_live="Blowin' in the Wind - Live at LA Forum, Inglewood, CA - February 1974"
           track_name_studio="Blowin' in the Wind"
-          artist_name_studio="Bob Dylan" />
+          artist_name_studio="Bob Dylan"
+        />
       </div>
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/ecdc10e9820be7f90d3234d8c501122d98346140?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b27355ecddc0466561dd83c773e4"
-          label="LIVE" />
+          label="LIVE"
+        />
       </div>
     </div>
   {:else}
@@ -93,24 +97,28 @@
   {#if $song}
     <div
       class="playercard"
-      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}"
+    >
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/cfd849c6c572e6684266dd55cd21fd7e69f2db58?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b27352b09f0ce4f200b1dcae2fa6"
-          label="STUDIO" />
+          label="STUDIO"
+        />
       </div>
       <div class="namecard">
         <Namecard
           track_name_live="Heaven - Live"
           track_name_studio="Heaven - 2003 Remaster"
-          artist_name_studio="Talking Heads" />
+          artist_name_studio="Talking Heads"
+        />
       </div>
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/9a276e396584e27f75ab7440f4a9bf48aecf6543?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b2734436f2e7c93002ad0eb9716a"
-          label="LIVE" />
+          label="LIVE"
+        />
       </div>
     </div>
   {:else}
@@ -123,24 +131,28 @@
   {#if $song}
     <div
       class="playercard"
-      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}"
+    >
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/b0d0b4ec8963779239654542a0b33d25caf38156?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b2736aa9314b7ddfbd8f036ba3ac"
-          label="STUDIO" />
+          label="STUDIO"
+        />
       </div>
       <div class="namecard">
         <Namecard
           track_name_live="Respect"
           track_name_studio="Respect - Live at Fillmore West, San Francisco, February 5, 1971"
-          artist_name_studio="Aretha Franklin" />
+          artist_name_studio="Aretha Franklin"
+        />
       </div>
       <div class="player">
         <Player
           preview="https://p.scdn.co/mp3-preview/063c482557787e400891b0da4cc279de251c6ba2?cid=57a57fe2e5b44b2bab703613bb86725e"
           art="https://i.scdn.co/image/ab67616d0000b27329b8d473ea845365e9a0ea22"
-          label="LIVE" />
+          label="LIVE"
+        />
       </div>
     </div>
   {:else}
@@ -149,7 +161,7 @@
 </div>
 
 <div class="preamble">
-  <p>{copy.Jukebox1}</p>
+  <p>{copy.Tool1}</p>
 </div>
 
 <style>

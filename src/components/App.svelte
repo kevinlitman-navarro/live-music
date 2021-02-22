@@ -25,7 +25,7 @@
   <section class="jukebox-container">
     <div class="juke-label">
       <div class="header-shape">
-        <h4>Jukebox</h4>
+        <h4>Analyst</h4>
         {@html headerShape}
       </div>
       <div class="line-horiz">
@@ -37,7 +37,8 @@
     {/if}
     <section
       class="jukebox"
-      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}">
+      style="{$ready ? 'visibility:visible;' : 'visibilty:hidden;'}"
+    >
       <Jukebox />
     </section>
     <div class="line-horiz">
