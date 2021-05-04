@@ -162,6 +162,7 @@
     );
     position: absolute;
     bottom: 0;
+    pointer-events: none;
   }
 
   .column2 {
