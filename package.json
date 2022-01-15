@@ -30,7 +30,7 @@
 		"rollup-plugin-svelte-hot": "^0.11.2",
 		"rollup-plugin-svg": "^2.0.0",
 		"rollup-plugin-terser": "^7.0.2",
-		"shelljs": "^0.8.4",
+		"shelljs": "^0.8.5",
 		"simple-svelte-autocomplete": "^1.2.4",
 		"sirv-cli": "^1.0.8",
 		"svelte": "^3.29.7",
