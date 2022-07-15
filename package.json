@@ -33,7 +33,7 @@
 		"shelljs": "^0.8.4",
 		"simple-svelte-autocomplete": "^1.2.4",
 		"sirv-cli": "^1.0.8",
-		"svelte": "^3.29.7",
+		"svelte": "^3.49.0",
 		"svelte-autocomplete": "0.0.4",
 		"svelte-preprocess": "^4.6.0"
 	},
