@@ -20,7 +20,7 @@
 		"enter-view": "^2.0.1",
 		"feather-icons": "^4.28.0",
 		"html-minifier": "^4.0.0",
-		"layercake": "^3.1.1",
+		"layercake": "^7.0.0",
 		"postcss": "^8.1.7",
 		"request": "^2.88.2",
 		"rollup": "^2.33.2",
